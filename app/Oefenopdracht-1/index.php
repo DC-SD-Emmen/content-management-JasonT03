@@ -1,16 +1,44 @@
+
 <?php
 
-$host = "mysql"; // Le host est le nom du service, présent dans le docker-compose.yml
-$dbname = "my-wonderful-website";
-$charset = "utf8";
-$port = "3306";
+    // Autoloader
+    spl_autoload_register(function ($class_name) { 
+        include 'classes/' . $class_name . '.php'; 
+    });
+
+    $account_manager = new AccountManager();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        $data = $_POST;
+        $account_manager->insertData($data);
+
+    }
+
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Drenthe College docker web server</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registratie</title>
 </head>
 <body>
-<h2>Hello world!</h2>
+
+    <h2>Account aanmaken: </h2>
+
+    <form action="" method="POST"><br>
+
+        <label for='gebruikersnaam'>Naam: </label><br>
+        <input type="text" name="gebruikersnaam" requierd><br><br>
+
+        <label for='wachtwoord'>Wachtwoord: </label><br>
+        <input type="text" name="wachtwoord" requierd><br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
 </body>
 </html>
