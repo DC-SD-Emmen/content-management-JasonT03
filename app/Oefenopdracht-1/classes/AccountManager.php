@@ -17,17 +17,16 @@
         }
 
         public function insertData($data) {
-
             // Link POST data to variables
             $username = $data['gebruikersnaam'];
-            $passwords = password_hash($data['wachtwoord'], PASSWORD_DEFAULT);
+            $password = $data['wachtwoord'];
 
             //Filtering
             $username = htmlspecialchars($username);
 
             //Regex validation
             $username_Regex = "/^[a-zA-Z0-9\s.,'?!]{1,50}$/";
-            $password_Regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/";
+            $password_Regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/";
 
             // Matching regex to variables and adding errors
             $errors = [];
@@ -35,39 +34,66 @@
             if (!preg_match($username_Regex, $username)) {
                 $errors[] = "Please enter a correct username.";
             }
-            if (!preg_match($password_Regex, $passwords)) {
+            if (!preg_match($password_Regex, $password)) {
                 $errors[] = "Please enter a correct password.";
             }
 
-            // If no errors, insert data into database
-            if (count($errors) == 0) {
-
-                try {
-                    $sql = "INSERT INTO users (username, passwords) VALUES (:username, :passwords)";
-            
-                    $stmt = $this->conn->prepare($sql);
-                    $stmt->bindParam(':username', $username);
-                    $stmt->bindParam(':passwords', $passwords);
-
-                    $stmt->execute();
-                    $message = date('Y-m-d H:i:s') . " - Account created successfully";
-                    file_put_contents($this->logFile, $message, FILE_APPEND);
-    
-                    $stmt->closeCursor();
-                } 
-    
-                catch (PDOException $e) {
-                    $errorMessage = date('Y-m-d H:i:s') . " - Account registration failed: " . $e->getMessage() . "\n";
-                    file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
-                }
-
-            } 
-            else {
-
+            if (!empty($errors)) {
                 foreach ($errors as $error) {
                     echo $error . "<br>";
                 }
+                return false;
+            }
+
+            try {
+                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                $sql = "INSERT INTO users (username, user_password) VALUES (:username, :passwordHash)";
+        
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':passwordHash', $passwordHash);
+
+                $stmt->execute();
+                $message = date('Y-m-d H:i:s') . " - Account created successfully";
+                file_put_contents($this->logFile, $message, FILE_APPEND);
+            } 
+
+            catch (PDOException $e) {
+                $errorMessage = date('Y-m-d H:i:s') . " - Account registration failed: " . $e->getMessage() . "\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+            }
+
+        }
+
+        public function login($login_data) {
+            session_start();
+
+            $username = $login_data['gebruikersnaam'];
+            $password = $login_data['wachtwoord'];
+
+            $sql = "SELECT * FROM users WHERE username = :username";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+
+            $user = $stmt->fetch();
+
+            if ($user && password_verify($password, $user['passwords'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                
+                $message = date('Y-m-d H:i:s') . " - Login successfully";
+                file_put_contents($this->logFile, $message, FILE_APPEND);
+
+                return true;
+            } 
+            else {
+                $errorMessage = date('Y-m-d H:i:s') . " - Login failed: Invalid username or password\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+
+                return false;
             }
         }
+
     }
 ?>
