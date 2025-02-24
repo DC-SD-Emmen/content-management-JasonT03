@@ -40,5 +40,7 @@
 
     </form>
 
+    <button onclick="window.location.href='index.php'">Login</button>
+
 </body>
 </html>

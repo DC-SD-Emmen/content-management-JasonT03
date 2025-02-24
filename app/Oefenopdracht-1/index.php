@@ -10,7 +10,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $login_data = $_POST;
-        $account_manager->insertData($login_data);
+        $account_manager->login($login_data);
 
     }
 
@@ -33,11 +33,13 @@
         <input type="text" name="gebruikersnaam" requierd><br><br>
 
         <label for='wachtwoord'>Wachtwoord: </label><br>
-        <input type="text" name="wachtwoord" requierd><br><br>
+        <input type="password" name="wachtwoord" requierd><br><br>
 
         <input type="submit" value="Submit">
 
     </form>
+
+    <button onclick="window.location.href='registration.php'">registration</button>
 
 </body>
 </html>
