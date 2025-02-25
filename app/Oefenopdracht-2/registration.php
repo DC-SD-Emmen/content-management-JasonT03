@@ -9,8 +9,8 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $login_data = $_POST;
-        $account_manager->login($login_data);
+        $data = $_POST;
+        $account_manager->insertData($data);
 
     }
 
@@ -21,11 +21,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+    <title>Registratie</title>
 </head>
 <body>
 
-    <h2>Login: </h2>
+    <h2>Account aanmaken: </h2>
 
     <form action="" method="POST"><br>
 
@@ -39,7 +39,7 @@
 
     </form>
 
-    <button onclick="window.location.href='registration.php'">registration</button>
+    <button onclick="window.location.href='index.php'">Login</button>
 
 </body>
 </html>
