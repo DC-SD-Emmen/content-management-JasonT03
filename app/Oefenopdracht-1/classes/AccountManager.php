@@ -18,13 +18,22 @@
             }
         }
 
+        public function usernameExists($username) {
+            $sql = "SELECT COUNT(*) FROM users WHERE LOWER(username) = LOWER(:username)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            
+            return $stmt->fetchColumn() > 0;
+        }
+
         public function insertData($data) {
             // Link POST data to variables
             $username = $data['gebruikersnaam'];
             $password = $data['wachtwoord'];
 
             //Filtering
-            $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); // vraag aan leraar of dit nodig is
+            $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
 
             //Regex validation
             $username_Regex = "/^[a-zA-Z0-9\s.,'?!]{1,50}$/";
@@ -38,6 +47,9 @@
             }
             if (!preg_match($password_Regex, $password)) {
                 $errors[] = "Please enter a correct password. 8characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.";
+            }
+            if ($this->usernameExists($username)) {
+                $errors[] = "Username already exists. Choose another.";
             }
 
             if (!empty($errors)) {
@@ -84,7 +96,10 @@
             $user = $stmt->fetch();
 
             if ($user && password_verify($password, $user['user_password'])) {
-                
+                // Sessienaam vernieuwen voor beveiliging
+                session_regenerate_id(true); 
+
+
                 // Session variables
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
@@ -93,9 +108,12 @@
                 $message = date('Y-m-d H:i:s') . " - Login successfully\n";
                 file_put_contents($this->logFile, $message, FILE_APPEND);
 
-                return true;
+                header("Location: home.php");
+                exit();
             } 
             else {
+                echo "<p style='color: red;'>Login failed: Invalid username or password</p>";
+
                 $errorMessage = date('Y-m-d H:i:s') . " - Login failed: Invalid username or password\n";
                 file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
 

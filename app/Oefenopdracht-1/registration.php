@@ -1,4 +1,3 @@
-
 <?php
 
     // Autoloader
@@ -34,7 +33,7 @@
         <input type="text" name="gebruikersnaam" requierd><br><br>
 
         <label for='wachtwoord'>Wachtwoord: </label><br>
-        <input type="text" name="wachtwoord" requierd><br><br>
+        <input type="password" name="wachtwoord" requierd><br><br>
 
         <input type="submit" value="Submit">
 
