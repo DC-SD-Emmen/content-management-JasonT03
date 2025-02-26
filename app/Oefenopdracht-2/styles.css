@@ -1,0 +1,564 @@
+
+
+/* General Design */
+
+body {    
+    font-family: "Space Grotesk", serif;
+    margin: 0px;
+    
+    background-image: linear-gradient(to top,rgb(0,0,0,0.4), rgb(0,0,0,0.4)), url('images/GenshinBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #FEFEFE;
+    margin: 0%;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #FEFEFE;
+    margin: 0%;
+}
+
+h3 {
+    color: #FEFEFE;
+    margin: 0%;
+}
+
+p {
+    color: #FEFEFE;
+    margin: 0%;
+}
+
+/* Mainpage-Container */
+
+.mainpage-container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 200vw;
+    backdrop-filter: blur(4px);
+}
+
+.mainpage-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+.mainpage-column {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.mainpage-header {
+    display: flex;
+    /* height: 90px; */
+    height: 40px;
+    align-items: center;
+    /* background-color: rgb(0, 0, 0, 0.3); */
+}
+
+.mainpage-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 96%;
+}
+
+/* Side Menu */
+
+.menu-underline {
+    border-style: none none solid none;
+    border-color: rgb(221, 221, 221, 0.8);
+    border-width: 1px;
+}
+
+.menu-buttons {
+    width: 100%;
+    height: 60px;
+
+    font-size: 24px;
+    font-weight: 500;
+    color: rgb(221, 221, 221, 0.7);
+    text-align: left;
+    padding: 0%;
+    background: none;
+    border: none;  
+}
+
+.menu-buttons:hover {
+    color: #FEFEFE;
+}
+
+.menu-title {
+    display: flex;
+    align-items: center;
+    height: 130px;
+    width: 80%;   
+}
+
+.menu-functions {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 80%; 
+}
+
+.menu-gamelist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 80%; 
+}
+
+.details-button {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+}
+
+.gamelist-images {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Header Menu */
+
+.header-buttons {
+    display: none;
+    width: 100%;
+    height: 60px;
+
+    font-size: 24px;
+    font-weight: 500;
+    color: rgb(221, 221, 221, 0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 0%;
+    background: none;
+    border: none;  
+}
+
+.header-buttons:hover {
+    color: #FEFEFE;
+}
+
+
+
+
+/* Display */
+
+.game-buttons {
+    width: 100%;
+    height: 20vw;
+    font-size: 24px;
+    font-weight: 500;
+    color: rgb(221, 221, 221, 0.7);
+    text-align: left;
+    padding: 0%;
+    background: none;
+    border: none;
+}
+
+.games-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5vw;
+    width: 93.2%;
+}
+
+.gamedisplay-title {
+    position: relative;
+    top: -7vw;
+    left: 1vw;
+    width: 34vw;
+    font-size: 2vw;
+    z-index: 90;   
+}
+
+.gamedisplay-image {
+    position: relative;    
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.8vw;
+    z-index: 5;
+}
+
+.gamedisplay-genrebox {
+    display: flex;
+    gap: 0.6vw;
+    font-size: 1vw;
+    color: #FEFEFE;
+    margin: 0%;
+}
+
+.genre-box {
+    position: relative;
+    padding: 0.6vw;
+    top: -6.5vw;
+    left: 1vw;
+    border-radius: 0.5vw;
+    background-color: rgb(254, 254, 254, 0.3);
+    backdrop-filter: blur(4px);
+    z-index: 90;
+}
+
+/* Details */
+
+.game-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2.5vw;
+    width: 93.2%;
+}
+
+.details-image {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.8vw;
+}
+
+.details-gameinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.details-genrebox {
+    display: flex;
+    gap: 0.6vw;
+    font-size: 1vw;
+    color: #FEFEFE;
+    margin: 0%;
+}
+
+.details-genre {
+    padding: 0.6vw;
+    border-radius: 0.5vw;
+    background-color: rgb(254, 254, 254, 0.3);
+    backdrop-filter: blur(4px);
+    z-index: 90;
+}
+
+.details-platformbox {
+    display: flex;
+    gap: 0.6vw;
+    font-size: 1vw;
+    color: #FEFEFE;
+    margin: 0%;
+}
+
+.details-platform {
+    padding: 0.6vw;
+    border-radius: 0.5vw;
+    background-color: rgb(254, 254, 254, 0.3);
+    backdrop-filter: blur(4px);
+    z-index: 90;
+}
+
+.details-description {
+    margin-top: 2.5vw;
+    width: 93.2%;
+}
+
+/* Form */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    width: 93.2%;
+    color: #FEFEFE;
+}
+
+.form > label {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form > input {
+    background-color: transparent;
+    border-color: #FEFEFE;
+    border-style: solid;
+}
+
+.form > fieldset {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    flex-wrap: wrap;
+    justify-content: center;
+    border-color: #FEFEFE;
+    border-style: solid;
+}
+
+.form > fieldset > span {
+    width: 200px;
+}
+
+.release-date {
+    width: fit-content;
+    color: #FEFEFE;
+}
+
+.form > textarea {
+    background-color: transparent;
+    border-color: #FEFEFE;
+    border-style: solid;
+    border-width: 2px;
+}
+
+#file_to_upload {
+    width: fit-content;
+    border-color: #FEFEFE;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.submit-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+}
+
+.submit-button {
+    width: 20vw;
+    height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FEFEFE;
+    background-color: dodgerblue;
+    border-color: #FEFEFE;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.8vw;
+}
+
+
+/* Media */
+
+/* Index.php 800*/
+
+@media (max-width: 800px) { 
+
+    .mainpage-container {
+        width: 100%;
+        height: 400vw;
+    }
+
+    .games-display {
+        grid-template-columns: 100%;
+        gap: 2.5vw;
+        width: 93.2%;
+    }
+
+    .game-buttons {
+        width: 100%;
+        height: 37.5vw;
+    }
+
+    .gamedisplay-title {
+        top: -12vw;
+        left: 2vw;
+        width: 64svw;
+        font-size: 4vw; 
+    }
+
+    .gamedisplay-image {   
+        width: 100%;
+        height: 100%;;
+    }
+
+    .gamedisplay-genrebox {
+        gap: 1vw;
+        font-size: 2vw;
+    }
+    
+    .genre-box {
+        padding: 1vw;
+        top: -11vw;
+        left: 2vw;
+        border-radius: 1vw;
+    }
+
+}
+
+/* Index.php 600*/
+
+@media (max-width: 600px) { 
+
+    .mainpage-menu {
+        display: none;
+    }
+
+    .mainpage-column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 4vw;
+    }    
+
+    .mainpage-header {
+        display: flex;
+        height: 90px;
+        align-items: center;
+        background-color: rgb(0, 0, 0, 0.3);
+    }
+
+    .header-buttons {
+        display: flex;
+        width: 100%;
+        height: 60px;
+    
+    }
+    
+    .game-buttons {
+        width: 100%;
+        height: 52vw;
+    }
+
+    .gamedisplay-title {
+        top: -18vw;
+        left: 3vw;
+        width: 90svw;
+        font-size: 6vw; 
+    }
+
+    .gamedisplay-image {   
+        width: 100%;
+        height: 100%;
+    }
+
+    .gamedisplay-genrebox {
+        gap: 1.5vw;
+        font-size: 3vw;
+    }
+    
+    .genre-box {
+        padding: 1.5vw;
+        top: -16vw;
+        left: 3vw;
+        border-radius: 2vw;
+    }
+
+
+
+
+}
+
+/* Game_Details.php 900*/
+
+@media (max-width: 900px) { 
+
+    .game-details {
+        grid-template-columns: 1fr;
+    }
+
+    .details-image {
+        height: 38vw;
+        border-radius: 1.6vw;
+    }
+
+    .details-title {
+        font-size: 60px;
+    }
+
+    .details-gameinfo {
+        gap: 2vw;
+    }
+    
+    .details-genrebox {
+        gap: 1.2vw;
+        font-size: 2vw;
+    }
+    
+    .details-genre {
+        padding: 1.2vw;
+        border-radius: 1vw;
+    }
+    
+    .details-platformbox {
+        gap: 1.2vw;
+        font-size: 2vw;
+    }
+    
+    .details-platform {
+        padding: 1.2vw;
+        border-radius: 1vw;
+    }
+    
+    .details-description {
+        margin-top: 5vw;
+    }
+
+    .details-developer {
+        font-size: 38px;
+    }
+
+    .details-gameinfo > h3 {
+        font-size: 28px;
+    }
+
+}
+
+/* Game_Detail.php */
+
+@media (max-width: 600px) { 
+
+    .details-gameinfo {
+        gap: 3vw;
+    }
+    
+    .details-genrebox {
+        gap: 1.8vw;
+        font-size: 3vw;
+    }
+    
+    .details-genre {
+        padding: 1.8vw;
+        border-radius: 1.5vw;
+    }
+    
+    .details-platformbox {
+        gap: 1.8vw;
+        font-size: 3vw;
+    }
+    
+    .details-platform {
+        padding: 1.8vw;
+        border-radius: 2vw;
+    }
+
+}
+
+/* Add_Game.php 600*/
+
+@media (max-width: 600px) { 
+    
+    .submit-button {
+        width: 40vw;
+    }
+
+}
