@@ -4,7 +4,7 @@
         include 'classes/' . $class_name . '.php'; 
     });
 
-    class AccountManager {
+    class UserManager {
 
         private $conn;
         private $logFile = 'log_file.txt';
@@ -19,7 +19,7 @@
         }
 
         public function usernameExists($username) {
-            $sql = "SELECT COUNT(*) FROM users WHERE LOWER(username) = LOWER(:username)";
+            $sql = "SELECT COUNT(*) FROM Users WHERE LOWER(username) = LOWER(:username)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':username', $username);
             $stmt->execute();
@@ -61,7 +61,7 @@
 
             try {
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO users (username, user_password) VALUES (:username, :passwordHash)";
+                $sql = "INSERT INTO Users (username, user_password) VALUES (:username, :passwordHash)";
         
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':username', $username);
@@ -88,7 +88,7 @@
             $username = $login_data['gebruikersnaam'] ?? '';
             $password = $login_data['wachtwoord'] ?? '';
 
-            $sql = "SELECT * FROM users WHERE username = :username";
+            $sql = "SELECT * FROM Users WHERE username = :username";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':username', $username);
             $stmt->execute();

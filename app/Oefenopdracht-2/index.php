@@ -60,6 +60,11 @@
                     Add Game
                 </button>
 
+                <button class="login menu-buttons" onclick="window.location.href='login.php'">
+                    <i class="fa-solid fa-circle-user"></i>
+                    Login
+                </button>
+
             </div>
 
             <div class="menu-gamelist menu-underline">
