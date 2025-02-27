@@ -108,7 +108,7 @@
                 $message = date('Y-m-d H:i:s') . " - Login successfully\n";
                 file_put_contents($this->logFile, $message, FILE_APPEND);
 
-                header("Location: home.php");
+                header("Location: dashboard.php");
                 exit();
             } 
             else {

@@ -1,3 +1,33 @@
+<!-- PHP Connection -->
+<?php
+
+    // Autoloader
+    spl_autoload_register(function ($class_name) { 
+        include 'classes/' . $class_name . '.php'; 
+    });
+
+    // Game Manager
+    $game_manager = new GameManager();
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $result = $game_manager->fileUpload($_FILES["file_to_upload"]);
+
+        //is error niet false? dan is er kennelijk een error
+        if($result['error'] !== 'false') {
+            echo $result['error'];
+        } 
+        else {
+            //dan is error dus wel false, en is er geen error en mag je doorgaan met Insert
+            $game_manager->insertData($_POST, $_FILES["file_to_upload"]['name']);
+        }
+            
+    }
+
+    $games = $game_manager->getGames();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,33 +46,6 @@
 </head>
 
 <body>
-
-    <?php
-
-        spl_autoload_register(function ($class_name) { 
-            include 'classes/' . $class_name . '.php'; 
-        });
-   
-        $game_manager = new GameManager();
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-            $result = $game_manager->fileUpload($_FILES["file_to_upload"]);
-
-            //is error niet false? dan is er kennelijk een error
-            if($result['error'] !== 'false') {
-                echo $result['error'];
-            } 
-            else {
-                //dan is error dus wel false, en is er geen error en mag je doorgaan met Insert
-                $game_manager->insertData($_POST, $_FILES["file_to_upload"]['name']);
-            }
-                
-        }
-
-        $games = $game_manager->getGames();
-
-    ?>
 
     <!-- Mainpage -->
     <div class="mainpage-container">

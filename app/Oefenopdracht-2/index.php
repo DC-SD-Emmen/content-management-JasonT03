@@ -1,6 +1,7 @@
 <!-- PHP Connection -->
 <?php
 
+    // Autoloader
     spl_autoload_register(function ($class_name) { 
         include 'classes/' . $class_name . '.php'; 
     });
@@ -33,8 +34,6 @@
 
 </head>
 <body>
-
-
     
     <!-- Mainpage -->
     <div class="mainpage-container">
@@ -44,7 +43,7 @@
 
             <div class="menu-title menu-underline">
 
-                <h1>Game Library</h1>
+                <h1>Game Shop</h1>
 
             </div>
 

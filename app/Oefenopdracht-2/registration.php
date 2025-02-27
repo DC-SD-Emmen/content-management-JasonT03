@@ -1,3 +1,4 @@
+<!-- PHP Connection -->
 <?php
 
     // Autoloader
@@ -5,6 +6,7 @@
         include 'classes/' . $class_name . '.php'; 
     });
 
+    // User Manager
     $user_manager = new UserManager();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
