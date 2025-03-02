@@ -1,4 +1,3 @@
-<!-- PHP Connection -->
 <?php
 
     // Autoloader
@@ -110,16 +109,24 @@
 
                         foreach ($games as $game) {
 
-                            echo '<button class="game-buttons" onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
-                                echo '<img class="gamedisplay-image" src="uploads/' . htmlspecialchars($game->get_image()) . '">';
-                                echo '<h2 class="gamedisplay-title">' . htmlspecialchars($game->get_title()) . '</h2>';
-                                $genres = explode(",", $game->get_genre());
-                                echo '<div class=gamedisplay-genrebox>';
-                                    foreach ($genres as $genre) {
-                                        echo '<div class="genre-box">' . htmlspecialchars($genre) . '</div>';
-                                    }
+                            echo '<div class="game-buttons" 
+                                    style="background-image: url(\'uploads/' . htmlspecialchars($game->get_image()) . '\');"
+                                    onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
+                                echo '<div class="gamedisplay-overlay">';
+                                    echo '<h2 class="gamedisplay-title">' . htmlspecialchars($game->get_title()) . '</h2>';
+                                    $genres = explode(",", $game->get_genre());
+                                    echo '<div class=gamedisplay-genrebox>';
+                                        foreach ($genres as $genre) {
+                                            echo '<div class="genre-box">' . htmlspecialchars($genre) . '</div>';
+                                        }
+                                    echo '</div>';
                                 echo '</div>';
-                            echo '</button>';
+                                echo '<div class="gamedisplay-buttons">';
+                                    echo '<button class="wishlist-button" onclick=window.location.href="wishlist.php?id=' . urlencode($game->get_id()) . '">';
+                                        echo '<i class="fa-solid fa-scroll"></i>';
+                                    echo '</button>';
+                                echo '</div>';
+                            echo '</div>';
 
                         }
 

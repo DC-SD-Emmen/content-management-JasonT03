@@ -1,4 +1,3 @@
-<!-- PHP Connection -->
 <?php
 
     // Autoloader
@@ -9,11 +8,6 @@
     // User Manager
     session_start();
     $user_manager = new UserManager();
-
-    if (!$user_manager->isUserLoggedIn()) {
-        header("Location: index.php");
-        exit();
-    }
 
     if (isset($_GET['logout'])) {
         $user_manager->logout();
