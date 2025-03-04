@@ -94,3 +94,31 @@
 2025-03-04 12:49:56 - Connected successfully
 2025-03-04 12:49:56 - Connected successfully
 2025-03-04 12:49:56 - Data retrieved successfully
+2025-03-04 19:23:20 - Connected successfully
+2025-03-04 19:23:20 - Data retrieved successfully
+2025-03-04 19:23:24 - Connected successfully
+2025-03-04 19:23:45 - Connected successfully
+2025-03-04 19:23:45 - Login successfully
+2025-03-04 19:23:45 - Connected successfully
+2025-03-04 19:23:45 - Connected successfully
+2025-03-04 19:23:45 - Data retrieved successfully
+2025-03-04 19:24:19 - Connected successfully
+2025-03-04 19:24:19 - Connection between user and game succesful
+2025-03-04 19:24:19 - Connected successfully
+2025-03-04 19:24:19 - Connected successfully
+2025-03-04 19:24:19 - Data retrieved successfully
+2025-03-04 19:24:31 - Connected successfully
+2025-03-04 19:24:31 - Connection between user and game already exists
+2025-03-04 19:24:31 - Connected successfully
+2025-03-04 19:24:31 - Connected successfully
+2025-03-04 19:24:31 - Data retrieved successfully
+2025-03-04 19:25:57 - Connected successfully
+2025-03-04 19:25:57 - Connection between user and game already exists
+2025-03-04 19:25:57 - Connected successfully
+2025-03-04 19:25:57 - Connected successfully
+2025-03-04 19:25:57 - Data retrieved successfully
+2025-03-04 19:25:58 - Connected successfully
+2025-03-04 19:25:58 - Connection between user and game succesful
+2025-03-04 19:25:58 - Connected successfully
+2025-03-04 19:25:58 - Connected successfully
+2025-03-04 19:25:58 - Data retrieved successfully

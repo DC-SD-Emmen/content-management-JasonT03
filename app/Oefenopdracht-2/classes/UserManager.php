@@ -61,13 +61,13 @@
 
             try {
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
                 $sql = "INSERT INTO Users (username, user_password) VALUES (:username, :passwordHash)";
-        
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':username', $username);
                 $stmt->bindParam(':passwordHash', $passwordHash);
-
                 $stmt->execute();
+
                 $message = date('Y-m-d H:i:s') . " - Account created successfully\n";
                 file_put_contents($this->logFile, $message, FILE_APPEND);
             
@@ -86,21 +86,35 @@
         public function connect_user_game($user_id, $game_id) {
 
             try {
+                // Connection between user and game check
+                $checkSql = "SELECT COUNT(*) FROM UserGames WHERE user_id = :user_id AND game_id = :game_id";
+                $checkStmt = $this->conn->prepare($checkSql);
+                $checkStmt->bindParam(':user_id', $user_id);
+                $checkStmt->bindParam(':game_id', $game_id);
+                $checkStmt->execute();
+
+                if ($checkStmt->fetchColumn() > 0) {
+                    $message = date('Y-m-d H:i:s') . " - Connection between user and game already exists\n";
+                    file_put_contents($this->logFile, $message, FILE_APPEND);
+
+                    return false;
+                }
+
+                // Making connection between user and game
                 $sql = "INSERT INTO UserGames (user_id, game_id) VALUES (:user_id, :game_id)";
-        
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':user_id', $user_id);
                 $stmt->bindParam(':game_id', $game_id);
-
                 $stmt->execute();
-                $message = date('Y-m-d H:i:s') . " - Account created successfully\n";
+
+                $message = date('Y-m-d H:i:s') . " - Connection between user and game succesful\n";
                 file_put_contents($this->logFile, $message, FILE_APPEND);
             
                 return true;
             } 
 
             catch (PDOException $e) {
-                $errorMessage = date('Y-m-d H:i:s') . " - Account registration failed: " . $e->getMessage() . "\n";
+                $errorMessage = date('Y-m-d H:i:s') . " - Connection between user and game failed: " . $e->getMessage() . "\n";
                 file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
             
                 return false;
@@ -123,7 +137,6 @@
             if ($user && password_verify($password, $user['user_password'])) {
                 // Sessienaam vernieuwen voor beveiliging
                 session_regenerate_id(true); 
-
 
                 // Session variables
                 $_SESSION['user_id'] = $user['id'];
