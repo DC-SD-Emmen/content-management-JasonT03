@@ -83,6 +83,31 @@
 
         }
 
+        public function connect_user_game($user_id, $game_id) {
+
+            try {
+                $sql = "INSERT INTO UserGames (user_id, game_id) VALUES (:user_id, :game_id)";
+        
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->bindParam(':game_id', $game_id);
+
+                $stmt->execute();
+                $message = date('Y-m-d H:i:s') . " - Account created successfully\n";
+                file_put_contents($this->logFile, $message, FILE_APPEND);
+            
+                return true;
+            } 
+
+            catch (PDOException $e) {
+                $errorMessage = date('Y-m-d H:i:s') . " - Account registration failed: " . $e->getMessage() . "\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+            
+                return false;
+            }
+
+        }
+
         public function login($login_data) {
             
             $username = $login_data['gebruikersnaam'] ?? '';

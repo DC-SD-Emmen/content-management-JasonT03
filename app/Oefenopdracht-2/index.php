@@ -121,11 +121,6 @@
                                         }
                                     echo '</div>';
                                 echo '</div>';
-                                echo '<div class="gamedisplay-buttons">';
-                                    echo '<button class="wishlist-button" onclick=window.location.href="wishlist.php?id=' . urlencode($game->get_id()) . '">';
-                                        echo '<i class="fa-solid fa-scroll"></i>';
-                                    echo '</button>';
-                                echo '</div>';
                             echo '</div>';
 
                         }

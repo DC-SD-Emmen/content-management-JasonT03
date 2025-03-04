@@ -106,6 +106,7 @@
     
                 // JavaScript redirect
                 echo "<script>window.location.href = 'index.php';</script>";
+                header("Location: index.php");
                 exit();
             }
 

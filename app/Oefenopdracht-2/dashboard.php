@@ -18,6 +18,21 @@
         exit();
     }
 
+    if (isset($_GET['wishlist']) && isset($_GET['game_id'])) {
+        
+        $user_id = $_SESSION['user_id'] ?? null;
+        $game_id = $_GET['game_id'] ?? null;
+
+        if ($user_manager->connect_user_game($user_id, $game_id)) {
+            header("Location: dashboard.php?wishlist_success=1");
+            exit();
+        } 
+        else {
+            header("Location: dashboard.php?wishlist_error=1");
+            exit();
+        }
+    }
+
     $game_manager = new GameManager();
     $games = $game_manager->getGames();
 
@@ -136,7 +151,7 @@
                                     echo '</div>';
                                 echo '</div>';
                                 echo '<div class="gamedisplay-buttons">';
-                                    echo '<button class="wishlist-button" onclick=window.location.href="wishlist.php?id=' . urlencode($game->get_id()) . '">';
+                                    echo '<button class="wishlist-button" onclick="event.stopPropagation(); window.location.href=\'dashboard.php?wishlist=1&game_id=' . urlencode($game->get_id()) . '\'">';
                                         echo '<i class="fa-solid fa-scroll"></i>';
                                     echo '</button>';
                                 echo '</div>';
