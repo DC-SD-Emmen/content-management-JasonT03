@@ -114,14 +114,14 @@
 
         // Get data from database class
 
-        public function getGames($game_id = null) {
-
+        public function getGames($game_id = null, $user_id = null) {
             try {
                 if ($game_id) {
                     $sql = "SELECT * FROM Games WHERE id = :id";
                     $stmt = $this->conn->prepare($sql);
                     $stmt->bindParam(':id', $game_id, PDO::PARAM_INT);
-                } else {
+                } 
+                else {
                     $sql = "SELECT * FROM Games";
                     $stmt = $this->conn->prepare($sql);
                 }
@@ -129,21 +129,45 @@
                 $stmt->execute();
                 $retrieve_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    $message = date('Y-m-d H:i:s') . " - Data retrieved successfully" . ($game_id ? " for game ID: $game_id" : "") . "\n";
-                    file_put_contents($this->logFile, $message, FILE_APPEND);
+                $message = date('Y-m-d H:i:s') . " - Data retrieved successfully" . ($game_id ? " for game ID: $game_id" : "") . "\n";
+                file_put_contents($this->logFile, $message, FILE_APPEND);
 
-                $game_data_list = $retrieve_data;
-    
-            } catch (PDOException $e) {
+                return $this->buildGameList($retrieve_data);
+            } 
+            catch (PDOException $e) {
                 $errorMessage = date('Y-m-d H:i:s') . " - Data retrieval failed: " . $e->getMessage() . "\n";
                 file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
-
                 return [];
             }
+        }
+
+        public function getUserGames($user_id) {
+            try {
+                $sql = "SELECT Games.* FROM Games 
+                        INNER JOIN UserGames ON Games.id = UserGames.game_id 
+                        WHERE UserGames.user_id = :user_id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->execute();
         
+                $retrieve_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+                $message = date('Y-m-d H:i:s') . " - Data retrieved successfully for user ID: $user_id\n";
+                file_put_contents($this->logFile, $message, FILE_APPEND);
+        
+                return $this->buildGameList($retrieve_data);
+            } 
+            catch (PDOException $e) {
+                $errorMessage = date('Y-m-d H:i:s') . " - Data retrieval failed: " . $e->getMessage() . "\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+                return [];
+            }
+
+        }
+
+        private function buildGameList($game_data_list) {
             $games = [];
             foreach ($game_data_list as $game_data) {
-
                 $game = new Game();
                 $game->set_id($game_data['id']);
                 $game->set_title($game_data['title']);
@@ -156,10 +180,8 @@
                 $game->set_image($game_data['images']);
                 
                 $games[] = $game;
-
             }
             return $games;
-
         }
 
         // Picture upload
@@ -215,7 +237,6 @@
             return ['success' => true, 'file' => $targetFile, 'error' => 'false'];
 
         }
-
 
     }
 

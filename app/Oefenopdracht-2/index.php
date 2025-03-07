@@ -65,7 +65,7 @@
 
             </div>
 
-            <div class="menu-gamelist menu-underline">
+            <!-- <div class="menu-gamelist menu-underline">
 
                 <?php
 
@@ -80,7 +80,7 @@
 
                 ?>
 
-            </div>
+            </div> -->
 
         </div>
         

@@ -36,6 +36,9 @@
     $game_manager = new GameManager();
     $games = $game_manager->getGames();
 
+    $user_id = $_SESSION['user_id'] ?? null;
+    $user_games = $game_manager->getUserGames($user_id);
+
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +94,7 @@
 
                 <?php
 
-                    foreach ($games as $game) {
+                    foreach ($user_games as $game) {
 
                         echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
                             echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game->get_image()) . '" alt="' . htmlspecialchars($game->get_title()) . '">';

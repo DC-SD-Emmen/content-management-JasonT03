@@ -5,6 +5,15 @@
         include 'classes/' . $class_name . '.php'; 
     });
 
+    // User Manager
+    session_start();
+    $user_manager = new UserManager();
+
+    if (isset($_GET['logout'])) {
+        $user_manager->logout();
+        exit();
+    }
+
     // Game Manager
     $game_manager = new GameManager();
 
@@ -60,20 +69,41 @@
 
             <div class="menu-functions menu-underline">
 
-                <button class="home-display menu-buttons" onclick="window.location.href='index.php'">
-                    <i class="fa-solid fa-house"></i>
-                    Home
-                </button>
-            
-                <button class="add-game menu-buttons" onclick="window.location.href='add_game.php'">
-                    <i class="fa-solid fa-gamepad"></i>
-                    Add Game
-                </button>
+                <?php if ($user_manager->isUserLoggedIn()) {?>
 
-                <button class="login menu-buttons" onclick="window.location.href='login.php'">
-                    <i class="fa-solid fa-circle-user"></i>
-                    Login
-                </button>
+                    <button class="home-display menu-buttons" onclick="window.location.href='dashboard.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game menu-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="logout menu-buttons" onclick="window.location.href='home.php?logout'">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        Logout
+                    </button>
+
+                <?php } else {?>
+
+                    <button class="home-display menu-buttons" onclick="window.location.href='index.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game menu-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="login menu-buttons" onclick="window.location.href='login.php'">
+                        <i class="fa-solid fa-circle-user"></i>
+                        Login
+                    </button>
+
+                <?php }?>
 
             </div>
 
