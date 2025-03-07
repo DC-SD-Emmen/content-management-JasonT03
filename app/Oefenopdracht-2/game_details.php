@@ -14,6 +14,21 @@
         exit();
     }
 
+    if ($user_manager->isUserLoggedIn() && isset($_GET['wishlist']) && isset($_GET['game_id'])) {
+        $user_id = $_SESSION['user_id'];
+        $game_id = $_GET['game_id'];
+
+        if ($user_manager->connect_user_game($user_id, $game_id)) {
+            header("Location: dashboard.php?wishlist_success=1");
+            exit();
+        } 
+        else {
+            header("Location: dashboard.php?wishlist_error=1");
+            exit();
+        }
+
+    }
+
     // Game Manager
     $game_manager = new GameManager();
     $games = $game_manager->getGames();
@@ -28,6 +43,9 @@
     else {
         echo "No game ID provided";
     }
+
+    $user_id = $_SESSION['user_id'] ?? null;
+    $user_games = $game_manager->getUserGames($user_id);
 
 ?>
 
@@ -104,12 +122,29 @@
 
                 <?php
 
-                    foreach ($games as $game_item) {
+                    if ($user_manager->isUserLoggedIn()) {
 
-                        echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game_item->get_id()) . '">';
-                            echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game_item->get_image()) . '" alt="' . htmlspecialchars($game_item->get_title()) . '">';
-                            echo '<div class="gamelist-title">' . htmlspecialchars($game_item->get_title()) . '</div>';
-                        echo '</button>';
+                        foreach ($user_games as $game_item) {
+
+                            echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game_item->get_id()) . '">';
+                                echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game_item->get_image()) . '" alt="' . htmlspecialchars($game_item->get_title()) . '">';
+                                echo '<div class="gamelist-title">' . htmlspecialchars($game_item->get_title()) . '</div>';
+                            echo '</button>';
+
+                        }
+                        
+                    }
+                        
+                    else {
+
+                        foreach ($games as $game_item) {
+
+                            echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game_item->get_id()) . '">';
+                                echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game_item->get_image()) . '" alt="' . htmlspecialchars($game_item->get_title()) . '">';
+                                echo '<div class="gamelist-title">' . htmlspecialchars($game_item->get_title()) . '</div>';
+                            echo '</button>';
+
+                        }
 
                     }
 

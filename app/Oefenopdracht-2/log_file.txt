@@ -1,2 +1,291 @@
 2025-03-07 07:56:29 - Connected successfully
 2025-03-07 07:56:29 - Data retrieved successfully
+2025-03-07 08:39:58 - Connected successfully
+2025-03-07 08:39:58 - Data retrieved successfully
+2025-03-07 08:40:00 - Connected successfully
+2025-03-07 08:40:00 - Connected successfully
+2025-03-07 08:40:00 - Data retrieved successfully
+2025-03-07 08:40:00 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:00 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:03 - Connected successfully
+2025-03-07 08:40:03 - Connected successfully
+2025-03-07 08:40:03 - Data retrieved successfully
+2025-03-07 08:40:03 - Data retrieved successfully for game ID: 2
+2025-03-07 08:40:03 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:04 - Connected successfully
+2025-03-07 08:40:04 - Connected successfully
+2025-03-07 08:40:04 - Data retrieved successfully
+2025-03-07 08:40:04 - Data retrieved successfully for game ID: 3
+2025-03-07 08:40:04 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:05 - Connected successfully
+2025-03-07 08:40:05 - Connected successfully
+2025-03-07 08:40:05 - Data retrieved successfully
+2025-03-07 08:40:05 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:05 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:06 - Connected successfully
+2025-03-07 08:40:06 - Connected successfully
+2025-03-07 08:40:06 - Data retrieved successfully
+2025-03-07 08:40:06 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:06 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:07 - Connected successfully
+2025-03-07 08:40:07 - Connected successfully
+2025-03-07 08:40:07 - Data retrieved successfully
+2025-03-07 08:40:07 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:07 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:07 - Connected successfully
+2025-03-07 08:40:07 - Connected successfully
+2025-03-07 08:40:07 - Data retrieved successfully
+2025-03-07 08:40:07 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:07 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:07 - Connected successfully
+2025-03-07 08:40:07 - Connected successfully
+2025-03-07 08:40:07 - Data retrieved successfully
+2025-03-07 08:40:07 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:07 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:08 - Connected successfully
+2025-03-07 08:40:08 - Connected successfully
+2025-03-07 08:40:08 - Data retrieved successfully
+2025-03-07 08:40:08 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:08 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:09 - Connected successfully
+2025-03-07 08:40:09 - Connected successfully
+2025-03-07 08:40:09 - Data retrieved successfully
+2025-03-07 08:40:09 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:09 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:12 - Connected successfully
+2025-03-07 08:40:12 - Connected successfully
+2025-03-07 08:40:12 - Data retrieved successfully
+2025-03-07 08:40:12 - Data retrieved successfully for game ID: 2
+2025-03-07 08:40:12 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:13 - Connected successfully
+2025-03-07 08:40:13 - Connected successfully
+2025-03-07 08:40:13 - Data retrieved successfully
+2025-03-07 08:40:13 - Data retrieved successfully for game ID: 3
+2025-03-07 08:40:13 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:13 - Connected successfully
+2025-03-07 08:40:13 - Connected successfully
+2025-03-07 08:40:13 - Data retrieved successfully
+2025-03-07 08:40:13 - Data retrieved successfully for game ID: 2
+2025-03-07 08:40:13 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:14 - Connected successfully
+2025-03-07 08:40:14 - Connected successfully
+2025-03-07 08:40:14 - Data retrieved successfully
+2025-03-07 08:40:14 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:14 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:16 - Connected successfully
+2025-03-07 08:40:16 - Data retrieved successfully
+2025-03-07 08:40:16 - Connected successfully
+2025-03-07 08:40:16 - Connected successfully
+2025-03-07 08:40:16 - Data retrieved successfully
+2025-03-07 08:40:16 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:16 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:18 - Connected successfully
+2025-03-07 08:40:18 - Data retrieved successfully
+2025-03-07 08:40:18 - Connected successfully
+2025-03-07 08:40:18 - Connected successfully
+2025-03-07 08:40:18 - Data retrieved successfully
+2025-03-07 08:40:18 - Data retrieved successfully for game ID: 2
+2025-03-07 08:40:18 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:20 - Connected successfully
+2025-03-07 08:40:20 - Data retrieved successfully
+2025-03-07 08:40:20 - Connected successfully
+2025-03-07 08:40:20 - Connected successfully
+2025-03-07 08:40:20 - Data retrieved successfully
+2025-03-07 08:40:20 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:20 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:22 - Connected successfully
+2025-03-07 08:40:22 - Data retrieved successfully
+2025-03-07 08:40:22 - Connected successfully
+2025-03-07 08:40:22 - Connected successfully
+2025-03-07 08:40:22 - Data retrieved successfully
+2025-03-07 08:40:22 - Data retrieved successfully for game ID: 3
+2025-03-07 08:40:22 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:23 - Connected successfully
+2025-03-07 08:40:23 - Data retrieved successfully
+2025-03-07 08:40:24 - Connected successfully
+2025-03-07 08:40:24 - Connected successfully
+2025-03-07 08:40:24 - Data retrieved successfully
+2025-03-07 08:40:24 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:24 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:33 - Connected successfully
+2025-03-07 08:40:33 - Connected successfully
+2025-03-07 08:40:33 - Data retrieved successfully
+2025-03-07 08:40:33 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:33 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:35 - Connected successfully
+2025-03-07 08:40:35 - Connected successfully
+2025-03-07 08:40:35 - Data retrieved successfully
+2025-03-07 08:40:35 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:35 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:36 - Connected successfully
+2025-03-07 08:40:36 - Data retrieved successfully
+2025-03-07 08:40:38 - Connected successfully
+2025-03-07 08:40:38 - Connected successfully
+2025-03-07 08:40:38 - Data retrieved successfully
+2025-03-07 08:40:38 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:38 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:39 - Connected successfully
+2025-03-07 08:40:39 - Connected successfully
+2025-03-07 08:40:39 - Data retrieved successfully
+2025-03-07 08:40:39 - Data retrieved successfully for game ID: 1
+2025-03-07 08:40:39 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:40 - Connected successfully
+2025-03-07 08:40:40 - Connected successfully
+2025-03-07 08:40:40 - Data retrieved successfully
+2025-03-07 08:40:40 - Data retrieved successfully for game ID: 2
+2025-03-07 08:40:40 - Data retrieved successfully for user ID: 
+2025-03-07 08:40:40 - Connected successfully
+2025-03-07 08:40:40 - Connected successfully
+2025-03-07 08:40:40 - Data retrieved successfully
+2025-03-07 08:40:40 - Data retrieved successfully for game ID: 3
+2025-03-07 08:40:40 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:12 - Connected successfully
+2025-03-07 08:41:12 - Connected successfully
+2025-03-07 08:41:12 - Data retrieved successfully
+2025-03-07 08:41:12 - Data retrieved successfully for game ID: 3
+2025-03-07 08:41:12 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:13 - Connected successfully
+2025-03-07 08:41:13 - Connected successfully
+2025-03-07 08:41:13 - Data retrieved successfully
+2025-03-07 08:41:13 - Data retrieved successfully for game ID: 3
+2025-03-07 08:41:13 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:14 - Connected successfully
+2025-03-07 08:41:14 - Data retrieved successfully
+2025-03-07 08:41:15 - Connected successfully
+2025-03-07 08:41:15 - Connected successfully
+2025-03-07 08:41:15 - Data retrieved successfully
+2025-03-07 08:41:15 - Data retrieved successfully for game ID: 1
+2025-03-07 08:41:15 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:17 - Connected successfully
+2025-03-07 08:41:17 - Connected successfully
+2025-03-07 08:41:17 - Data retrieved successfully
+2025-03-07 08:41:17 - Data retrieved successfully for game ID: 2
+2025-03-07 08:41:17 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:17 - Connected successfully
+2025-03-07 08:41:17 - Connected successfully
+2025-03-07 08:41:17 - Data retrieved successfully
+2025-03-07 08:41:17 - Data retrieved successfully for game ID: 3
+2025-03-07 08:41:17 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:18 - Connected successfully
+2025-03-07 08:41:18 - Connected successfully
+2025-03-07 08:41:18 - Data retrieved successfully
+2025-03-07 08:41:18 - Data retrieved successfully for game ID: 1
+2025-03-07 08:41:18 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:19 - Connected successfully
+2025-03-07 08:41:19 - Connected successfully
+2025-03-07 08:41:19 - Data retrieved successfully
+2025-03-07 08:41:19 - Data retrieved successfully for game ID: 2
+2025-03-07 08:41:19 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:20 - Connected successfully
+2025-03-07 08:41:20 - Connected successfully
+2025-03-07 08:41:20 - Data retrieved successfully
+2025-03-07 08:41:20 - Data retrieved successfully for game ID: 1
+2025-03-07 08:41:20 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:21 - Connected successfully
+2025-03-07 08:41:21 - Data retrieved successfully
+2025-03-07 08:41:21 - Connected successfully
+2025-03-07 08:41:21 - Connected successfully
+2025-03-07 08:41:21 - Data retrieved successfully
+2025-03-07 08:41:21 - Data retrieved successfully for game ID: 2
+2025-03-07 08:41:21 - Data retrieved successfully for user ID: 
+2025-03-07 08:41:23 - Connected successfully
+2025-03-07 08:41:23 - Data retrieved successfully
+2025-03-07 08:41:23 - Connected successfully
+2025-03-07 08:41:23 - Connected successfully
+2025-03-07 08:41:23 - Data retrieved successfully
+2025-03-07 08:41:23 - Data retrieved successfully for game ID: 1
+2025-03-07 08:41:23 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:47 - Connected successfully
+2025-03-07 08:42:47 - Connected successfully
+2025-03-07 08:42:47 - Data retrieved successfully
+2025-03-07 08:42:47 - Data retrieved successfully for game ID: 1
+2025-03-07 08:42:47 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:49 - Connected successfully
+2025-03-07 08:42:49 - Connected successfully
+2025-03-07 08:42:49 - Data retrieved successfully
+2025-03-07 08:42:49 - Data retrieved successfully for game ID: 1
+2025-03-07 08:42:49 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:50 - Connected successfully
+2025-03-07 08:42:50 - Connected successfully
+2025-03-07 08:42:50 - Data retrieved successfully
+2025-03-07 08:42:50 - Data retrieved successfully for game ID: 2
+2025-03-07 08:42:50 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:51 - Connected successfully
+2025-03-07 08:42:51 - Connected successfully
+2025-03-07 08:42:51 - Data retrieved successfully
+2025-03-07 08:42:51 - Data retrieved successfully for game ID: 3
+2025-03-07 08:42:51 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:52 - Connected successfully
+2025-03-07 08:42:52 - Data retrieved successfully
+2025-03-07 08:42:53 - Connected successfully
+2025-03-07 08:42:53 - Connected successfully
+2025-03-07 08:42:53 - Data retrieved successfully
+2025-03-07 08:42:53 - Data retrieved successfully for game ID: 1
+2025-03-07 08:42:53 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:54 - Connected successfully
+2025-03-07 08:42:54 - Data retrieved successfully
+2025-03-07 08:42:55 - Connected successfully
+2025-03-07 08:42:55 - Connected successfully
+2025-03-07 08:42:55 - Data retrieved successfully
+2025-03-07 08:42:55 - Data retrieved successfully for game ID: 2
+2025-03-07 08:42:55 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:56 - Connected successfully
+2025-03-07 08:42:56 - Data retrieved successfully
+2025-03-07 08:42:56 - Connected successfully
+2025-03-07 08:42:56 - Connected successfully
+2025-03-07 08:42:56 - Data retrieved successfully
+2025-03-07 08:42:56 - Data retrieved successfully for game ID: 3
+2025-03-07 08:42:56 - Data retrieved successfully for user ID: 
+2025-03-07 08:42:57 - Connected successfully
+2025-03-07 08:42:57 - Data retrieved successfully
+2025-03-07 08:43:10 - Connected successfully
+2025-03-07 08:43:10 - Data retrieved successfully
+2025-03-07 08:43:12 - Connected successfully
+2025-03-07 08:43:12 - Connected successfully
+2025-03-07 08:43:12 - Data retrieved successfully
+2025-03-07 08:43:12 - Data retrieved successfully for game ID: 1
+2025-03-07 08:43:12 - Data retrieved successfully for user ID: 
+2025-03-07 08:43:13 - Connected successfully
+2025-03-07 08:43:13 - Connected successfully
+2025-03-07 08:43:13 - Data retrieved successfully
+2025-03-07 08:43:13 - Data retrieved successfully for game ID: 2
+2025-03-07 08:43:13 - Data retrieved successfully for user ID: 
+2025-03-07 08:43:13 - Connected successfully
+2025-03-07 08:43:13 - Connected successfully
+2025-03-07 08:43:13 - Data retrieved successfully
+2025-03-07 08:43:13 - Data retrieved successfully for game ID: 3
+2025-03-07 08:43:13 - Data retrieved successfully for user ID: 
+2025-03-07 08:43:14 - Connected successfully
+2025-03-07 08:43:14 - Connected successfully
+2025-03-07 08:43:14 - Data retrieved successfully
+2025-03-07 08:43:14 - Data retrieved successfully for game ID: 1
+2025-03-07 08:43:14 - Data retrieved successfully for user ID: 
+2025-03-07 08:43:15 - Connected successfully
+2025-03-07 08:43:15 - Data retrieved successfully
+2025-03-07 08:43:16 - Connected successfully
+2025-03-07 08:43:16 - Connected successfully
+2025-03-07 08:43:16 - Data retrieved successfully
+2025-03-07 08:43:16 - Data retrieved successfully for game ID: 2
+2025-03-07 08:43:16 - Data retrieved successfully for user ID: 
+2025-03-07 08:43:18 - Connected successfully
+2025-03-07 08:43:18 - Data retrieved successfully
+2025-03-07 08:43:19 - Connected successfully
+2025-03-07 08:43:19 - Connected successfully
+2025-03-07 08:43:19 - Data retrieved successfully
+2025-03-07 08:43:19 - Data retrieved successfully for game ID: 1
+2025-03-07 08:43:19 - Data retrieved successfully for user ID: 
+2025-03-07 08:43:19 - Connected successfully
+2025-03-07 08:43:19 - Data retrieved successfully
+2025-03-07 12:04:51 - Connected successfully
+2025-03-07 12:05:01 - Connected successfully
+2025-03-07 12:05:02 - Login successfully
+2025-03-07 12:05:02 - Connected successfully
+2025-03-07 12:05:02 - Connected successfully
+2025-03-07 12:05:02 - Data retrieved successfully
+2025-03-07 12:05:02 - Data retrieved successfully for user ID: 4
+2025-03-07 12:05:18 - Connected successfully
+2025-03-07 12:05:18 - Connection between user and game succesful
+2025-03-07 12:05:18 - Connected successfully
+2025-03-07 12:05:18 - Connected successfully
+2025-03-07 12:05:18 - Data retrieved successfully
+2025-03-07 12:05:18 - Data retrieved successfully for user ID: 4

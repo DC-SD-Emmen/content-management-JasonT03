@@ -5,6 +5,7 @@
         include 'classes/' . $class_name . '.php'; 
     });
 
+    // User Manager
     session_start();
     $user_manager = new UserManager();
 
@@ -19,9 +20,8 @@
     }
 
     if (isset($_GET['wishlist']) && isset($_GET['game_id'])) {
-        
-        $user_id = $_SESSION['user_id'] ?? null;
-        $game_id = $_GET['game_id'] ?? null;
+        $user_id = $_SESSION['user_id'];
+        $game_id = $_GET['game_id'];
 
         if ($user_manager->connect_user_game($user_id, $game_id)) {
             header("Location: dashboard.php?wishlist_success=1");
@@ -33,6 +33,7 @@
         }
     }
 
+    // Game Manager
     $game_manager = new GameManager();
     $games = $game_manager->getGames();
 

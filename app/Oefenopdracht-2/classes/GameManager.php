@@ -27,12 +27,12 @@
             $image = $fileName;
 
             //Filtering and implode
-            $title = htmlspecialchars($title);
+            // $title = htmlspecialchars($title);
             $genre_string = implode(",",$genre);
             $platform_string = implode(",",$platform);
-            $developer = htmlspecialchars($developer);
-            $description = htmlspecialchars($description);
-            $image = htmlspecialchars($image);
+            // $developer = htmlspecialchars($developer);
+            // $description = htmlspecialchars($description);
+            // $image = htmlspecialchars($image);
 
             //Regex validation
             $title_Regex = "/^[a-zA-Z0-9\s.,'?!]{1,100}$/";
@@ -105,7 +105,7 @@
                 }
     
                 // JavaScript redirect
-                echo "<script>window.location.href = 'index.php';</script>";
+                // echo "<script>window.location.href = 'index.php';</script>";
                 header("Location: index.php");
                 exit();
             }
@@ -114,7 +114,7 @@
 
         // Get data from database class
 
-        public function getGames($game_id = null, $user_id = null) {
+        public function getGames($game_id = null) {
             try {
                 if ($game_id) {
                     $sql = "SELECT * FROM Games WHERE id = :id";
