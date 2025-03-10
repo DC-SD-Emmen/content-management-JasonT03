@@ -37,15 +37,18 @@
 
     <h2>Account aanmaken: </h2>
 
-    <form action="" method="POST"><br>
+    <form class="form" action="" method="POST">
 
-        <label for='gebruikersnaam'>Naam: </label><br>
-        <input type="text" name="gebruikersnaam" requierd><br><br>
+        <label for='gebruikersnaam'>Naam: </label>
+        <input class="form-input" type="text" name="gebruikersnaam" requierd>
 
-        <label for='wachtwoord'>Wachtwoord: </label><br>
-        <input type="password" name="wachtwoord" requierd><br><br>
+        <label for='email'>Email: </label>
+        <input class="form-input" type="email" name="email" requierd>
 
-        <input type="submit" value="Submit">
+        <label for='wachtwoord'>Wachtwoord: </label>
+        <input class="form-input" type="password" name="wachtwoord" requierd>
+
+        <input class="submit-button" type="submit" value="Submit">
 
     </form>
 

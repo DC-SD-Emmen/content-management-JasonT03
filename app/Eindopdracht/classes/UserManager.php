@@ -27,9 +27,19 @@
             return $stmt->fetchColumn() > 0;
         }
 
+        public function emailExists($email) {
+            $sql = "SELECT COUNT(*) FROM Users WHERE LOWER(email) = LOWER(:email)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            
+            return $stmt->fetchColumn() > 0;
+        }
+
         public function insertData($data) {
             // Link POST data to variables
             $username = $data['gebruikersnaam'];
+            $email = $data['email'];
             $password = $data['wachtwoord'];
 
             //Filtering
@@ -37,6 +47,7 @@
 
             //Regex validation
             $username_Regex = "/^[a-zA-Z0-9\s.,'?!]{1,50}$/";
+            $email_Regex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,50}$/";
             $password_Regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/";
 
             // Matching regex to variables and adding errors
@@ -45,11 +56,17 @@
             if (!preg_match($username_Regex, $username)) {
                 $errors[] = "Please enter a correct username.";
             }
+            if (!preg_match($email_Regex, $email)) {
+                $errors[] = "Please enter a correct email.";
+            }
             if (!preg_match($password_Regex, $password)) {
                 $errors[] = "Please enter a correct password. 8characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.";
             }
             if ($this->usernameExists($username)) {
                 $errors[] = "Username already exists. Choose another.";
+            }
+            if ($this->emailExists($email)) {
+                $errors[] = "Email already exists. Choose another.";
             }
 
             if (!empty($errors)) {
@@ -62,15 +79,17 @@
             try {
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-                $sql = "INSERT INTO Users (username, user_password) VALUES (:username, :passwordHash)";
+                $sql = "INSERT INTO Users (username, email, user_password) VALUES (:username, :email, :passwordHash)";
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':passwordHash', $passwordHash);
                 $stmt->execute();
 
                 $message = date('Y-m-d H:i:s') . " - Account created successfully\n";
                 file_put_contents($this->logFile, $message, FILE_APPEND);
-            
+                
+                header("Location: login.php");
                 return true;
             } 
 

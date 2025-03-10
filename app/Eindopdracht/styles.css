@@ -310,8 +310,11 @@ p {
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    width: 93.2%;
     color: #FEFEFE;
+}
+
+.addGame-form {
+    width: 93.2%;
 }
 
 .form > label {
@@ -319,7 +322,7 @@ p {
     font-weight: bold;
 }
 
-.form > input {
+.form-input {
     background-color: transparent;
     border-color: #FEFEFE;
     border-style: solid;

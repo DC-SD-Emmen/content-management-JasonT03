@@ -147,10 +147,10 @@
 
                 <!-- Form -->
 
-                <form class="form" action="" method="POST" enctype="multipart/form-data">
+                <form class="form addGame-form" action="" method="POST" enctype="multipart/form-data">
 
                     <label for='title'>Title: </label>
-                    <input type="text" name="title">
+                    <input class="form-input" type="text" name="title">
 
                     <label for="genre">Genre: </label>
                     <fieldset>
@@ -278,10 +278,10 @@
                     </fieldset>                    
 
                     <label for="developer">Developer: </label>
-                    <input type="text" name="developer">
+                    <input class="form-input" type="text" name="developer">
 
                     <label for="release_year">Release year: </label>
-                    <input class="release-date" type="date" name="release_year">
+                    <input class="release-date form-input" type="date" name="release_year">
 
                     <label for="rating">Rating: </label>
                     <input type="range" id="rating" name="rating" min="1.0" max="10.0" step="0.1" 

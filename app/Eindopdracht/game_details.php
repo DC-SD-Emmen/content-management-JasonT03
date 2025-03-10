@@ -201,7 +201,7 @@
 
                     echo '</div>';
 
-                    echo '<p class="details-description">' . $game->get_description() . '</p>';
+                    echo '<p class="details-description">' . htmlspecialchars($game->get_description()) . '</p>';
 
                 }
                 else {
