@@ -5,14 +5,40 @@
         include 'classes/' . $class_name . '.php'; 
     });
 
-    // Log File Clear
-    $logFile = 'log_file.txt';
-    if (file_exists($logFile) && date('Y-m-d', filemtime($logFile)) < date('Y-m-d')) {
-        file_put_contents($logFile, ''); // Clear log if it’s a new day
+    // User Manager
+    session_start();
+    $user_manager = new UserManager();
+
+    if (!$user_manager->isUserLoggedIn()) {
+        header("Location: index.php");
+        exit();
     }
 
+    if (isset($_GET['logout'])) {
+        $user_manager->logout();
+        exit();
+    }
+
+    if (isset($_GET['wishlist']) && isset($_GET['game_id'])) {
+        $user_id = $_SESSION['user_id'];
+        $game_id = $_GET['game_id'];
+
+        if ($user_manager->connect_user_game($user_id, $game_id)) {
+            header("Location: dashboard.php?wishlist_success=1");
+            exit();
+        } 
+        else {
+            header("Location: dashboard.php?wishlist_error=1");
+            exit();
+        }
+    }
+
+    // Game Manager
     $game_manager = new GameManager();
     $games = $game_manager->getGames();
+
+    $user_id = $_SESSION['user_id'] ?? null;
+    $user_games = $game_manager->getUserGames($user_id);
 
 ?>
 
@@ -21,7 +47,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Library Index</title>
+    <title>account settings</title>
 
     <link rel="stylesheet" href="styles.css">
     <!-- For icons -->
@@ -33,7 +59,7 @@
 
 </head>
 <body>
-    
+
     <!-- Mainpage -->
     <div class="mainpage-container">
 
@@ -42,13 +68,13 @@
 
             <div class="menu-title menu-underline">
 
-                <h1>Game Shop</h1>
+                <h1>Game Library</h1>
 
             </div>
 
             <div class="menu-functions menu-underline">
-
-                <button class="home-display menu-buttons" onclick="window.location.href='index.php'">
+                
+                <button class="home-display menu-buttons" onclick="window.location.href='dashboard.php'">
                     <i class="fa-solid fa-house"></i>
                     Home
                 </button>
@@ -58,18 +84,23 @@
                     Add Game
                 </button>
 
-                <button class="login menu-buttons" onclick="window.location.href='login.php'">
-                    <i class="fa-solid fa-circle-user"></i>
-                    Login
+                <button class="account menu-buttons" onclick="window.location.href='account_settings.php'">
+                    <i class="fa-solid fa-user-pen"></i>
+                    Account	Settings
+                </button>
+
+                <button class="logout menu-buttons" onclick="window.location.href='account_settings.php?logout'">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    Logout
                 </button>
 
             </div>
 
-            <!-- <div class="menu-gamelist menu-underline">
+            <div class="menu-gamelist menu-underline">
 
                 <?php
 
-                    foreach ($games as $game) {
+                    foreach ($user_games as $game) {
 
                         echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
                             echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game->get_image()) . '" alt="' . htmlspecialchars($game->get_title()) . '">';
@@ -80,16 +111,18 @@
 
                 ?>
 
-            </div> -->
+            </div>
 
         </div>
-        
+
         <!-- Header and Display -->
         <div class="mainpage-column">
 
             <div class="mainpage-header">
+
+                <!-- <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2> -->
                 
-                <button class="home-display header-buttons" onclick="window.location.href='index.php'">
+                <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
                     <i class="fa-solid fa-house"></i>
                     Home
                 </button>
@@ -99,9 +132,14 @@
                     Add Game
                 </button>
 
-                <button class="login header-buttons" onclick="window.location.href='login.php'">
-                    <i class="fa-solid fa-circle-user"></i>
-                    Login
+                <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
+                    <i class="fa-solid fa-user-pen"></i>
+                    Account	Settings
+                </button>
+
+                <button class="logout header-buttons" onclick="window.location.href='account_settings.php?logout'">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    Logout
                 </button>
 
             </div>
@@ -125,6 +163,11 @@
                                             echo '<div class="genre-box">' . htmlspecialchars($genre) . '</div>';
                                         }
                                     echo '</div>';
+                                echo '</div>';
+                                echo '<div class="gamedisplay-buttons">';
+                                    echo '<button class="wishlist-button" onclick="event.stopPropagation(); window.location.href=\'dashboard.php?wishlist=1&game_id=' . urlencode($game->get_id()) . '\'">';
+                                        echo '<i class="fa-solid fa-scroll"></i>';
+                                    echo '</button>';
                                 echo '</div>';
                             echo '</div>';
 

@@ -74,7 +74,7 @@
 
             <div class="menu-functions menu-underline">
                 
-                <button class="home-display menu-buttons" onclick="window.location.href='index.php'">
+                <button class="home-display menu-buttons" onclick="window.location.href='dashboard.php'">
                     <i class="fa-solid fa-house"></i>
                     Home
                 </button>
@@ -82,6 +82,11 @@
                 <button class="add-game menu-buttons" onclick="window.location.href='add_game.php'">
                     <i class="fa-solid fa-gamepad"></i>
                     Add Game
+                </button>
+
+                <button class="account menu-buttons" onclick="window.location.href='account_settings.php'">
+                    <i class="fa-solid fa-user-pen"></i>
+                    Account	Settings
                 </button>
 
                 <button class="logout menu-buttons" onclick="window.location.href='dashboard.php?logout'">
@@ -117,7 +122,7 @@
 
                 <!-- <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2> -->
                 
-                <button class="home-display header-buttons" onclick="window.location.href='index.php'">
+                <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
                     <i class="fa-solid fa-house"></i>
                     Home
                 </button>
@@ -127,7 +132,12 @@
                     Add Game
                 </button>
 
-                <button class="logout header-buttons" onclick="window.location.href='home.php?logout'">
+                <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
+                    <i class="fa-solid fa-user-pen"></i>
+                    Account	Settings
+                </button>
+
+                <button class="logout header-buttons" onclick="window.location.href='dashboard.php?logout'">
                     <i class="fa-solid fa-circle-xmark"></i>
                     Logout
                 </button>

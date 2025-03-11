@@ -81,7 +81,12 @@
                         Add Game
                     </button>
 
-                    <button class="logout menu-buttons" onclick="window.location.href='home.php?logout'">
+                    <button class="account menu-buttons" onclick="window.location.href='account_settings.php'">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Account	Settings
+                    </button>
+
+                    <button class="logout menu-buttons" onclick="window.location.href='add_game.php?logout'">
                         <i class="fa-solid fa-circle-xmark"></i>
                         Logout
                     </button>
@@ -131,15 +136,46 @@
             
             <div class="mainpage-header">
 
-                <button class="home-display header-buttons" onclick="window.location.href='index.php'">
-                    <i class="fa-solid fa-house"></i>
-                    Home
-                </button>
-            
-                <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                    <i class="fa-solid fa-gamepad"></i>
-                    Add Game
-                </button>
+                <?php if ($user_manager->isUserLoggedIn()) {?>
+
+                    <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Account	Settings
+                    </button>
+
+                    <button class="logout header-buttons" onclick="window.location.href='home.php?logout'">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        Logout
+                    </button>
+
+                <?php } else {?>
+
+                    <button class="home-display header-buttons" onclick="window.location.href='index.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="login header-buttons" onclick="window.location.href='login.php'">
+                        <i class="fa-solid fa-circle-user"></i>
+                        Login
+                    </button>
+
+                <?php }?>
 
             </div>
 
