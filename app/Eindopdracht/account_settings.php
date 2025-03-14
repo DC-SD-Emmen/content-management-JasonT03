@@ -7,11 +7,17 @@
 
     // User Manager
     session_start();
+    
     $user_manager = new UserManager();
 
     if (!$user_manager->isUserLoggedIn()) {
         header("Location: index.php");
         exit();
+    }
+
+    if ($user_manager->isUserLoggedIn()) {
+        $user_id = $_SESSION['user_id'];
+        $user_info = $user_manager->getUser($user_id);
     }
 
     if (isset($_GET['logout'])) {
@@ -31,6 +37,13 @@
             header("Location: dashboard.php?wishlist_error=1");
             exit();
         }
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $data = $_POST;
+        $user_id = $_SESSION['user_id'];
+        $user_manager->insertData($data, $user_id);
+
     }
 
     // Game Manager
@@ -145,37 +158,23 @@
             </div>
 
             <div class="mainpage-display">
+                
+                <h2>Changing account information</h2>
 
-                <div class="games-display">
+                <form class="form" action="" method="POST">
 
-                    <?php
+                    <label for='gebruikersnaam'>Name: </label>
+                    <input class="form-input" type="text" name="gebruikersnaam" value="<?php echo $user_info ? htmlspecialchars($user_info->get_username()) : ''; ?>">
 
-                        foreach ($games as $game) {
+                    <label for='email'>Email: </label>
+                    <input class="form-input" type="email" name="email" value="<?php echo $user_info ? htmlspecialchars($user_info->get_email()) : ''; ?>">
 
-                            echo '<div class="game-buttons" 
-                                    style="background-image: url(\'uploads/' . htmlspecialchars($game->get_image()) . '\');"
-                                    onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
-                                echo '<div class="gamedisplay-overlay">';
-                                    echo '<h2 class="gamedisplay-title">' . htmlspecialchars($game->get_title()) . '</h2>';
-                                    $genres = explode(",", $game->get_genre());
-                                    echo '<div class=gamedisplay-genrebox>';
-                                        foreach ($genres as $genre) {
-                                            echo '<div class="genre-box">' . htmlspecialchars($genre) . '</div>';
-                                        }
-                                    echo '</div>';
-                                echo '</div>';
-                                echo '<div class="gamedisplay-buttons">';
-                                    echo '<button class="wishlist-button" onclick="event.stopPropagation(); window.location.href=\'dashboard.php?wishlist=1&game_id=' . urlencode($game->get_id()) . '\'">';
-                                        echo '<i class="fa-solid fa-scroll"></i>';
-                                    echo '</button>';
-                                echo '</div>';
-                            echo '</div>';
+                    <label for='wachtwoord'>Password: </label>
+                    <input class="form-input" type="password" name="wachtwoord">
 
-                        }
+                    <input class="submit-button" type="submit" value="Submit">
 
-                    ?>
-
-                </div>
+                </form>
 
             </div>
 

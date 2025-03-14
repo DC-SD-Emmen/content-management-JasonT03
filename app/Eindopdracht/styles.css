@@ -323,6 +323,7 @@ p {
 }
 
 .form-input {
+    color: #FEFEFE;
     background-color: transparent;
     border-color: #FEFEFE;
     border-style: solid;
@@ -347,6 +348,7 @@ p {
 }
 
 .form > textarea {
+    color: #FEFEFE;
     background-color: transparent;
     border-color: #FEFEFE;
     border-style: solid;

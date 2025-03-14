@@ -102,6 +102,37 @@
 
         }
 
+        public function changeData($data, $user_id) {
+            // Link POST data to variables
+            $username = $data['gebruikersnaam'];
+            $email = $data['email'];
+            $password = $data['wachtwoord'];
+
+            $sql = "SELECT * FROM Users WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $user_id);
+            $stmt->execute();
+
+            $user = $stmt->fetch();
+
+            //Filtering
+            $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+
+            //Regex validation
+            $username_Regex = "/^[a-zA-Z0-9\s.,'?!]{1,50}$/";
+            $email_Regex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,50}$/";
+            $password_Regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/";
+
+            // Matching regex to variables and adding errors
+
+            $errors = [];
+
+            if ((empty($username) || $username === $user['username'])) && (empty($email) || $email === $user['email']) && (empty($password) || password_verify($password, $user['user_password'])) {
+                $errors[] = "Please fill in at least one field.";
+            }
+
+        }
+
         public function connect_user_game($user_id, $game_id) {
 
             try {
@@ -193,6 +224,29 @@
 
             header('Location: index.php');
             exit();
+        }
+
+        public function getUser($user_id) {
+            $sql = "SELECT * FROM Users WHERE id = :user_id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $retrieve_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $message = date('Y-m-d H:i:s') . " - User data retrieved successfully\n";
+            file_put_contents($this->logFile, $message, FILE_APPEND);
+
+            return $this->buildUser($retrieve_data);
+        }
+
+        public function buildUser($user_data_list) {
+            $user = new User();
+            $user->set_id($user_data_list['id']);
+            $user->set_username($user_data_list['username']);
+            $user->set_email($user_data_list['email']);
+
+            return $user;
         }
 
     }

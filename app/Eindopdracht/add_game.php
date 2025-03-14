@@ -153,7 +153,7 @@
                         Account	Settings
                     </button>
 
-                    <button class="logout header-buttons" onclick="window.location.href='home.php?logout'">
+                    <button class="logout header-buttons" onclick="window.location.href='add_game.php?logout'">
                         <i class="fa-solid fa-circle-xmark"></i>
                         Logout
                     </button>

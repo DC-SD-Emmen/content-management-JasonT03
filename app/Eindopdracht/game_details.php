@@ -34,7 +34,6 @@
     $games = $game_manager->getGames();
 
     $game_id = $_GET['id'] ?? null;
-    $game = null;
     
     if ($game_id) {
         $game_details = $game_manager->getGames($game_id);
