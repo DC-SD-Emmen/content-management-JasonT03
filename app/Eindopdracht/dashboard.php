@@ -98,6 +98,8 @@
 
             <div class="menu-gamelist menu-underline">
 
+                <h1>wishlist</h1>
+
                 <?php
 
                     foreach ($user_games as $game) {

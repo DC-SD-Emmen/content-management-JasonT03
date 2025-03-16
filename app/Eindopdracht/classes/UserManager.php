@@ -36,45 +36,116 @@
             return $stmt->fetchColumn() > 0;
         }
 
-        public function insertData($data) {
+        public function fetchUserById($user_id) {
+            try {
+                $sql = "SELECT * FROM Users WHERE id = :user_id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                $stmt->execute();
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                return $user ?: false;
+            } 
+            catch (PDOException $e) {
+                $errorMessage = date('Y-m-d H:i:s') . " - Failed to fetch user with ID: $user_id - Error: " . $e->getMessage() . "\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+
+                return false;	
+            }
+        }
+
+        private function validateUserData($data, $user_id, $user) {
             // Link POST data to variables
             $username = $data['gebruikersnaam'];
             $email = $data['email'];
             $password = $data['wachtwoord'];
-
-            //Filtering
+        
+            // Filtering input
             $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
-
-            //Regex validation
-            $username_Regex = "/^[a-zA-Z0-9\s.,'?!]{1,50}$/";
+        
+            // Regex validation patterns
+            $username_Regex = "/^[a-zA-Z0-9.,'?!]{1,50}$/";
             $email_Regex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,50}$/";
             $password_Regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/";
+        
+            // Fetch user data           
+            if ($user_id !== null && $user === false) {
+                echo "<p style='color: red;'>User not found. Cannot update.</p>";
+                return false;
+            }
 
-            // Matching regex to variables and adding errors
+            // Error handling
             $errors = [];
+        
+            if ($user_id === null) {
+                if (empty($username)) {
+                    $errors[] = "Please enter a username.";
+                }
+                if (empty($email)) {
+                    $errors[] = "Please enter an email.";
+                }
+                if (empty($password)) {
+                    $errors[] = "Please enter a password.";
+                }
+            }
+            elseif (
+                (empty($username) || $username === $user['username']) && 
+                (empty($email) || $email === $user['email']) && 
+                (empty($password) || password_verify($password, $user['user_password']))
+            ) {
+                echo "<p style='color: red;'>Please fill in / change at least one field.</p>";
+                return false;
+            }
 
-            if (!preg_match($username_Regex, $username)) {
+            if (!empty($username) && !preg_match($username_Regex, $username)) {
                 $errors[] = "Please enter a correct username.";
             }
-            if (!preg_match($email_Regex, $email)) {
+        
+            if (!empty($email) && !preg_match($email_Regex, $email)) {
                 $errors[] = "Please enter a correct email.";
             }
-            if (!preg_match($password_Regex, $password)) {
-                $errors[] = "Please enter a correct password. 8characters, 1 uppercase, 1 lowercase, 1 number and 1 special character.";
+        
+            if (!empty($password) && !preg_match($password_Regex, $password)) {
+                $errors[] = "Please enter a correct password. Must have at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character.";
             }
-            if ($this->usernameExists($username)) {
+        
+            // Check if filled in, exists, and if user is either empty or not the same as the user in the database.
+            if (!empty($username) && $this->usernameExists($username) && (!$user || $username !== $user['username'])) {
                 $errors[] = "Username already exists. Choose another.";
             }
-            if ($this->emailExists($email)) {
+        
+            if (!empty($email) && $this->emailExists($email) && (!$user || $email !== $user['email'])) {
                 $errors[] = "Email already exists. Choose another.";
             }
-
+        
             if (!empty($errors)) {
                 foreach ($errors as $error) {
                     echo "<p style='color: red;'>$error</p>";
                 }
                 return false;
             }
+
+            // Return validated data
+            return [
+                'username' => $username,
+                'email' => $email,
+                'password' => $password,
+                'user' => $user
+            ];
+        }
+
+        public function insertData($data) {
+
+            // Validate user data
+            $validatedData = $this->validateUserData($data, null, null);
+            
+            if (!$validatedData) {
+                return false;
+            }
+
+            $username = $validatedData['username'];
+            $email = $validatedData['email'];
+            $password = $validatedData['password'];
 
             try {
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -103,32 +174,72 @@
         }
 
         public function changeData($data, $user_id) {
-            // Link POST data to variables
-            $username = $data['gebruikersnaam'];
-            $email = $data['email'];
-            $password = $data['wachtwoord'];
 
-            $sql = "SELECT * FROM Users WHERE id = :id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $user_id);
-            $stmt->execute();
+            $currentPassword = $data['huidig-wachtwoord'] ?? '';
 
-            $user = $stmt->fetch();
+            $user = $this->fetchUserById($user_id);
+            if ($user_id !== null && $user === false) {
+                echo "<p style='color: red;'>User not found. Cannot update.</p>";
+                return false;
+            }
 
-            //Filtering
-            $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+            if ($user && password_verify($currentPassword, $user['user_password'])) {
+                // Validate user data
+                $validatedData = $this->validateUserData($data, $user_id, $user);
+                
+                if (!$validatedData) {
+                    return false;
+                }
 
-            //Regex validation
-            $username_Regex = "/^[a-zA-Z0-9\s.,'?!]{1,50}$/";
-            $email_Regex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,50}$/";
-            $password_Regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/";
+                $username = $validatedData['username'];
+                $email = $validatedData['email'];
+                $password = $validatedData['password'];
+                $user = $validatedData['user'];
 
-            // Matching regex to variables and adding errors
+                try {
 
-            $errors = [];
+                    if (!empty($username) && $username !== $user['username']) {
+                        $sql = "UPDATE Users SET username = :username WHERE id = :id";
+                        $stmt = $this->conn->prepare($sql);
+                        $stmt->bindParam(':username', $username);
+                        $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+                        $stmt->execute();
+                    }
 
-            if ((empty($username) || $username === $user['username'])) && (empty($email) || $email === $user['email']) && (empty($password) || password_verify($password, $user['user_password'])) {
-                $errors[] = "Please fill in at least one field.";
+                    if (!empty($email) && $email !== $user['email']) {
+                        $sql = "UPDATE Users SET email = :email WHERE id = :id";
+                        $stmt = $this->conn->prepare($sql);
+                        $stmt->bindParam(':email', $email);
+                        $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+                        $stmt->execute();
+                    }
+
+                    if (!empty($password) && !password_verify($password, $user['user_password'])) {
+                        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                        $sql = "UPDATE Users SET user_password = :passwordHash WHERE id = :id";
+                        $stmt = $this->conn->prepare($sql);
+                        $stmt->bindParam(':passwordHash', $passwordHash);
+                        $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+                        $stmt->execute();
+                    }
+
+                    header("Location: dashboard.php");
+                    return true;
+                }
+                catch (PDOException $e) {
+                    $errorMessage = date('Y-m-d H:i:s') . " - Account changing failed: " . $e->getMessage() . "\n";
+                    file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+                
+                    return false;
+                }
+            }
+            else {
+                echo "<p style='color: red;'>Changing data failed: Invalid password</p>";
+
+                $errorMessage = date('Y-m-d H:i:s') . " - Changing data failed: Invalid password\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+
+                return false;
             }
 
         }
@@ -227,12 +338,10 @@
         }
 
         public function getUser($user_id) {
-            $sql = "SELECT * FROM Users WHERE id = :user_id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            $retrieve_data = $stmt->fetch(PDO::FETCH_ASSOC);
+            $retrieve_data = $this->fetchUserById($user_id);
+            if (!$retrieve_data) {
+                return null;
+            }
 
             $message = date('Y-m-d H:i:s') . " - User data retrieved successfully\n";
             file_put_contents($this->logFile, $message, FILE_APPEND);

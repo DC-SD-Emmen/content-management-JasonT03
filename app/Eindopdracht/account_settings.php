@@ -25,24 +25,10 @@
         exit();
     }
 
-    if (isset($_GET['wishlist']) && isset($_GET['game_id'])) {
-        $user_id = $_SESSION['user_id'];
-        $game_id = $_GET['game_id'];
-
-        if ($user_manager->connect_user_game($user_id, $game_id)) {
-            header("Location: dashboard.php?wishlist_success=1");
-            exit();
-        } 
-        else {
-            header("Location: dashboard.php?wishlist_error=1");
-            exit();
-        }
-    }
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data = $_POST;
         $user_id = $_SESSION['user_id'];
-        $user_manager->insertData($data, $user_id);
+        $user_manager->changeData($data, $user_id);
 
     }
 
@@ -50,7 +36,7 @@
     $game_manager = new GameManager();
     $games = $game_manager->getGames();
 
-    $user_id = $_SESSION['user_id'] ?? null;
+    $user_id = $_SESSION['user_id'];
     $user_games = $game_manager->getUserGames($user_id);
 
 ?>
@@ -110,6 +96,8 @@
             </div>
 
             <div class="menu-gamelist menu-underline">
+
+                <h1>Wishlist</h1>
 
                 <?php
 
@@ -171,6 +159,9 @@
 
                     <label for='wachtwoord'>Password: </label>
                     <input class="form-input" type="password" name="wachtwoord">
+
+                    <label for='huidig-wachtwoord'>Current Password: </label>
+                    <input class="form-input" type="password" name="huidig-wachtwoord" required>
 
                     <input class="submit-button" type="submit" value="Submit">
 
