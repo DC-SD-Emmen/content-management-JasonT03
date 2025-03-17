@@ -23,14 +23,24 @@
         $user_id = $_SESSION['user_id'];
         $game_id = $_GET['game_id'];
 
-        if ($user_manager->connect_user_game($user_id, $game_id)) {
-            header("Location: dashboard.php?wishlist_success=1");
-            exit();
-        } 
-        else {
-            header("Location: dashboard.php?wishlist_error=1");
-            exit();
+        if ($_GET['wishlist'] == 1) {
+            // Add to wishlist
+            if ($user_manager->connectUserGame($user_id, $game_id)) {
+                header("Location: dashboard.php?wishlist_success=1");
+                exit();
+            } 
         }
+
+        elseif ($_GET['wishlist'] == 0) {
+            // Remove from wishlist
+            if ($user_manager->disconnectUserGame($user_id, $game_id)) {
+                header("Location: dashboard.php?wishlist_success=1");
+                exit();
+            }
+        }
+
+        header("Location: dashboard.php?wishlist_error=1");
+        exit();
     }
 
     // Game Manager
@@ -39,6 +49,11 @@
 
     $user_id = $_SESSION['user_id'] ?? null;
     $user_games = $game_manager->getUserGames($user_id);
+
+    $wishlist_games = [];
+    foreach ($user_games as $user_game) {
+        $wishlist_games[] = $user_game->get_id();
+    }
 
 ?>
 
@@ -167,9 +182,16 @@
                                     echo '</div>';
                                 echo '</div>';
                                 echo '<div class="gamedisplay-buttons">';
-                                    echo '<button class="wishlist-button" onclick="event.stopPropagation(); window.location.href=\'dashboard.php?wishlist=1&game_id=' . urlencode($game->get_id()) . '\'">';
-                                        echo '<i class="fa-solid fa-scroll"></i>';
-                                    echo '</button>';
+                                    if (!in_array($game->get_id(), $wishlist_games)) {
+                                        echo '<button class="add-to-wishlist" onclick="event.stopPropagation(); window.location.href=\'dashboard.php?wishlist=1&game_id=' . urlencode($game->get_id()) . '\'">';
+                                            echo '<i class="fa-solid fa-scroll"></i>';
+                                        echo '</button>';
+                                    }
+                                    else {
+                                        echo '<button class="remove-from-wishlist" onclick="event.stopPropagation(); window.location.href=\'dashboard.php?wishlist=0&game_id=' . urlencode($game->get_id()) . '\'">';
+                                        echo '<i class="fa-solid fa-toilet-paper-slash"></i>';
+                                        echo '</button>';
+                                    }
                                 echo '</div>';
                             echo '</div>';
 

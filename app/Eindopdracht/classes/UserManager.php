@@ -288,7 +288,7 @@
 
         }
 
-        public function connect_user_game($user_id, $game_id) {
+        public function connectUserGame($user_id, $game_id) {
 
             try {
                 // Connection between user and game check
@@ -320,6 +320,31 @@
 
             catch (PDOException $e) {
                 $errorMessage = date('Y-m-d H:i:s') . " - Connection between user and game failed: " . $e->getMessage() . "\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+            
+                return false;
+            }
+
+        }
+
+        public function disconnectUserGame($user_id, $game_id) {
+            
+            try {
+                // Disconnecting user and game
+                $sql = "DELETE FROM UserGames WHERE user_id = :user_id AND game_id = :game_id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->bindParam(':game_id', $game_id);
+                $stmt->execute();
+
+                $message = date('Y-m-d H:i:s') . " - Disconnection between user and game succesful\n";
+                file_put_contents($this->logFile, $message, FILE_APPEND);
+            
+                return true;
+            } 
+
+            catch (PDOException $e) {
+                $errorMessage = date('Y-m-d H:i:s') . " - Disconnection between user and game failed: " . $e->getMessage() . "\n";
                 file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
             
                 return false;

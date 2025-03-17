@@ -231,7 +231,7 @@ p {
     padding: 1vw;
 }
 
-.wishlist-button {
+.gamedisplay-buttons > button {
     height: fit-content;
     padding: 0.6vw;
     border-radius: 0.5vw;
