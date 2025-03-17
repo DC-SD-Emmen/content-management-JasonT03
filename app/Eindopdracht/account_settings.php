@@ -26,9 +26,16 @@
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $data = $_POST;
-        $user_id = $_SESSION['user_id'];
-        $user_manager->changeData($data, $user_id);
+        if (isset($_POST['update'])) {
+            $data = $_POST;
+            $user_id = $_SESSION['user_id'];
+            $user_manager->changeData($data, $user_id);
+        }
+        if (isset($_POST['delete'])) {
+            $data = $_POST;
+            $user_id = $_SESSION['user_id'];
+            $user_manager->deleteUser($data, $user_id);
+        }
 
     }
 
@@ -163,7 +170,18 @@
                     <label for='huidig-wachtwoord'>Current Password: </label>
                     <input class="form-input" type="password" name="huidig-wachtwoord" required>
 
-                    <input class="submit-button" type="submit" value="Submit">
+                    <input class="submit-button" type="submit" name="update" value="Submit">
+
+                </form>
+
+                <h2>Account Deletion</h2>
+
+                <form class="form" action="" method="POST">
+
+                    <label for='wachtwoord'>Password: </label>
+                    <input class="form-input" type="password" name="wachtwoord" required>
+
+                    <input class="submit-button" type="submit" name="delete" value="Submit">
 
                 </form>
 

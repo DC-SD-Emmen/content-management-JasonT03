@@ -174,7 +174,6 @@
         }
 
         public function changeData($data, $user_id) {
-
             $currentPassword = $data['huidig-wachtwoord'] ?? '';
 
             $user = $this->fetchUserById($user_id);
@@ -237,6 +236,51 @@
                 echo "<p style='color: red;'>Changing data failed: Invalid password</p>";
 
                 $errorMessage = date('Y-m-d H:i:s') . " - Changing data failed: Invalid password\n";
+                file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+
+                return false;
+            }
+
+        }
+
+        public function deleteUser($data, $user_id) {
+            $currentPassword = $data['wachtwoord'] ?? '';
+
+            $user = $this->fetchUserById($user_id);
+            if ($user_id !== null && $user === false) {
+                echo "<p style='color: red;'>User not found. Cannot update.</p>";
+                return false;
+            }
+
+            if ($user && password_verify($currentPassword, $user['user_password'])) {
+                try {
+                    $sql = "DELETE FROM UserGames WHERE user_id = :user_id";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                    $stmt->execute();
+
+                    $sql = "DELETE FROM Users WHERE id = :id";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+                    $stmt->execute();
+
+                    $message = date('Y-m-d H:i:s') . " - Account deleted successfully\n";
+                    file_put_contents($this->logFile, $message, FILE_APPEND);
+
+                    $this->logout();
+                    return true;
+                }
+                catch (PDOException $e) {
+                    $errorMessage = date('Y-m-d H:i:s') . " - Account deletion failed: " . $e->getMessage() . "\n";
+                    file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
+                
+                    return false;
+                }
+            }
+            else {
+                echo "<p style='color: red;'>Deleting account failed: Invalid password</p>";
+
+                $errorMessage = date('Y-m-d H:i:s') . " - Deleting account failed: Invalid password\n";
                 file_put_contents($this->logFile, $errorMessage, FILE_APPEND);
 
                 return false;
@@ -326,7 +370,6 @@
         }
 
         public function logout() {
-            
             session_unset();
             session_destroy();
 

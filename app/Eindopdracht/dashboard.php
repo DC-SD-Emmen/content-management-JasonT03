@@ -98,7 +98,7 @@
 
             <div class="menu-gamelist menu-underline">
 
-                <h1>wishlist</h1>
+                <h1>Wishlist</h1>
 
                 <?php
 
