@@ -115,78 +115,83 @@
 
         </div>
         
-        <!-- Header and Display -->  
-        <div class="mainpage-header">
+        <!-- Header and Display -->
+        <div class="mainpage-column">
+            
+            <div class="mainpage-header">
 
-            <?php if ($user_manager->isUserLoggedIn()) {?>
+                <?php if ($user_manager->isUserLoggedIn()) {?>
 
-                <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
-                    <i class="fa-solid fa-house"></i>
-                    Home
-                </button>
+                    <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
 
-                <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                    <i class="fa-solid fa-gamepad"></i>
-                    Add Game
-                </button>
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
 
-                <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
-                    <i class="fa-solid fa-user-pen"></i>
-                    Account	Settings
-                </button>
+                    <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Account	Settings
+                    </button>
 
-                <button class="logout header-buttons" onclick="window.location.href='add_game.php?logout'">
-                    <i class="fa-solid fa-circle-xmark"></i>
-                    Logout
-                </button>
+                    <button class="logout header-buttons" onclick="window.location.href='add_game.php?logout'">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        Logout
+                    </button>
 
-            <?php } else {?>
+                <?php } else {?>
 
-                <button class="home-display header-buttons" onclick="window.location.href='index.php'">
-                    <i class="fa-solid fa-house"></i>
-                    Home
-                </button>
+                    <button class="home-display header-buttons" onclick="window.location.href='index.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
 
-                <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                    <i class="fa-solid fa-gamepad"></i>
-                    Add Game
-                </button>
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
 
-                <button class="login header-buttons" onclick="window.location.href='login.php'">
-                    <i class="fa-solid fa-circle-user"></i>
-                    Login
-                </button>
+                    <button class="login header-buttons" onclick="window.location.href='login.php'">
+                        <i class="fa-solid fa-circle-user"></i>
+                        Login
+                    </button>
 
-            <?php }?>
+                <?php }?>
 
-        </div>
+            </div>
 
-        <div class="mainpage-display">
+            <div class="mainpage-display">
 
-            <h2>Account aanmaken: </h2>
+                <h2>Account aanmaken: </h2>
 
-            <form class="form" action="" method="POST">
+                <form class="form" action="" method="POST">
 
-                <label for='gebruikersnaam'>Naam: </label>
-                <input class="form-input" type="text" name="gebruikersnaam" requierd>
+                    <label for='gebruikersnaam'>Naam: </label>
+                    <input class="form-input" type="text" name="gebruikersnaam" requierd>
 
-                <label for='email'>Email: </label>
-                <input class="form-input" type="email" name="email" requierd>
+                    <label for='email'>Email: </label>
+                    <input class="form-input" type="email" name="email" requierd>
 
-                <label for='wachtwoord'>Wachtwoord: </label>
-                <input class="form-input" type="password" name="wachtwoord" requierd>
+                    <label for='wachtwoord'>Wachtwoord: </label>
+                    <input class="form-input" type="password" name="wachtwoord" requierd>
 
-                <div class="submit-position">
-                    <input class="submit-button" type="submit" value="Submit">
-                </div>
+                    <div class="submit-position">
+                        <input class="submit-button" type="submit" value="Submit">
+                    </div>
 
-            </form>
+                </form>
 
-            <button class="submit-button" onclick="window.location.href='login.php'">Login</button>
+                <button class="submit-button" onclick="window.location.href='login.php'">Login</button>
+
+            </div>
 
         </div>
 
     </div>
+
 
 </body>
 </html>

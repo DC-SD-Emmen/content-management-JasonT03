@@ -158,91 +158,93 @@
 
         </div>
 
-        <!-- Header and Display -->
+        <div class="mainpage-column">
 
-        <div class="mainpage-header">
+            <div class="mainpage-header">
 
-            <?php if ($user_manager->isUserLoggedIn()) {?>
+                <?php if ($user_manager->isUserLoggedIn()) {?>
 
-                <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
-                    <i class="fa-solid fa-house"></i>
-                    Home
-                </button>
+                    <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
 
-                <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                    <i class="fa-solid fa-gamepad"></i>
-                    Add Game
-                </button>
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
 
-                <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
-                    <i class="fa-solid fa-user-pen"></i>
-                    Account	Settings
-                </button>
+                    <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Account	Settings
+                    </button>
 
-                <button class="logout header-buttons" onclick="window.location.href='game_details.php?logout'">
-                    <i class="fa-solid fa-circle-xmark"></i>
-                    Logout
-                </button>
+                    <button class="logout header-buttons" onclick="window.location.href='game_details.php?logout'">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        Logout
+                    </button>
 
-            <?php } else {?>
+                <?php } else {?>
 
-                <button class="home-display header-buttons" onclick="window.location.href='index.php'">
-                    <i class="fa-solid fa-house"></i>
-                    Home
-                </button>
+                    <button class="home-display header-buttons" onclick="window.location.href='index.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
 
-                <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                    <i class="fa-solid fa-gamepad"></i>
-                    Add Game
-                </button>
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
 
-                <button class="login header-buttons" onclick="window.location.href='login.php'">
-                    <i class="fa-solid fa-circle-user"></i>
-                    Login
-                </button>
+                    <button class="login header-buttons" onclick="window.location.href='login.php'">
+                        <i class="fa-solid fa-circle-user"></i>
+                        Login
+                    </button>
 
-            <?php }?>
+                <?php }?>
 
-        </div>
+            </div>
 
-        <div class="mainpage-display">
+            <div class="mainpage-display">
 
-            <?php if ($game) {
+                <?php if ($game) {
 
-                echo "<div class='game-details'> ";
+                    echo "<div class='game-details'> ";
 
-                    echo '<img class="details-image" src="uploads/' . htmlspecialchars($game->get_image()) . '">';
-                        
-                    echo '<div class="details-gameinfo">';
+                        echo '<img class="details-image" src="uploads/' . htmlspecialchars($game->get_image()) . '">';
+                            
+                        echo '<div class="details-gameinfo">';
 
-                        echo '<h1 class="details-title">' . htmlspecialchars($game->get_title()) . '</h1>';
-                        $genres = explode(",", $game->get_genre());
-                        echo '<div class=details-genrebox>';
-                            foreach ($genres as $genre) {
-                                echo '<div class="details-genre">' . htmlspecialchars($genre) . '</div>';
-                            }
+                            echo '<h1 class="details-title">' . htmlspecialchars($game->get_title()) . '</h1>';
+                            $genres = explode(",", $game->get_genre());
+                            echo '<div class=details-genrebox>';
+                                foreach ($genres as $genre) {
+                                    echo '<div class="details-genre">' . htmlspecialchars($genre) . '</div>';
+                                }
+                            echo '</div>';
+                            $platforms = explode(",", $game->get_platform());
+                            echo '<div class=details-platformbox>';
+                                foreach ($platforms as $platform) {
+                                    echo '<div class="details-platform">' . htmlspecialchars($platform) . '</div>';
+                                }
+                            echo '</div>';
+                            echo '<h2 class="details-developer">Developer: ' . htmlspecialchars($game->get_developer()) . '</h2>';
+                            echo '<h3>Release date: ' . htmlspecialchars($game->get_release_year()) . '</h3>';
+                            echo '<h3>Rating: ' . $game->get_rating() . '</h3>';
+
                         echo '</div>';
-                        $platforms = explode(",", $game->get_platform());
-                        echo '<div class=details-platformbox>';
-                            foreach ($platforms as $platform) {
-                                echo '<div class="details-platform">' . htmlspecialchars($platform) . '</div>';
-                            }
-                        echo '</div>';
-                        echo '<h2 class="details-developer">Developer: ' . htmlspecialchars($game->get_developer()) . '</h2>';
-                        echo '<h3>Release date: ' . htmlspecialchars($game->get_release_year()) . '</h3>';
-                        echo '<h3>Rating: ' . $game->get_rating() . '</h3>';
 
                     echo '</div>';
 
-                echo '</div>';
+                    echo '<p class="details-description">' . htmlspecialchars($game->get_description()) . '</p>';
 
-                echo '<p class="details-description">' . htmlspecialchars($game->get_description()) . '</p>';
+                }
+                else {
+                    echo "No Game Details avaliable";
+                }
+                ?>
 
-            }
-            else {
-                echo "No Game Details avaliable";
-            }
-            ?>
+            </div>
 
         </div>
 

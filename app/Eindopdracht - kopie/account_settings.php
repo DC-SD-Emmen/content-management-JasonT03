@@ -124,68 +124,72 @@
         </div>
 
         <!-- Header and Display -->
-        <div class="mainpage-header">
+        <div class="mainpage-column">
 
-            <!-- <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2> -->
+            <div class="mainpage-header">
+
+                <!-- <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2> -->
+                
+                <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </button>
             
-            <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
-                <i class="fa-solid fa-house"></i>
-                Home
-            </button>
-        
-            <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                <i class="fa-solid fa-gamepad"></i>
-                Add Game
-            </button>
+                <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                    <i class="fa-solid fa-gamepad"></i>
+                    Add Game
+                </button>
 
-            <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
-                <i class="fa-solid fa-user-pen"></i>
-                Account	Settings
-            </button>
+                <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
+                    <i class="fa-solid fa-user-pen"></i>
+                    Account	Settings
+                </button>
 
-            <button class="logout header-buttons" onclick="window.location.href='account_settings.php?logout'">
-                <i class="fa-solid fa-circle-xmark"></i>
-                Logout
-            </button>
+                <button class="logout header-buttons" onclick="window.location.href='account_settings.php?logout'">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    Logout
+                </button>
 
-        </div>
+            </div>
 
-        <div class="mainpage-display">
-            
-            <h2>Changing account information</h2>
+            <div class="mainpage-display">
+                
+                <h2>Changing account information</h2>
 
-            <form class="form addGame-form" action="" method="POST">
+                <form class="form addGame-form" action="" method="POST">
 
-                <label for='gebruikersnaam'>Name: </label>
-                <input class="form-input" type="text" name="gebruikersnaam" value="<?php echo $user_info ? htmlspecialchars($user_info->get_username()) : ''; ?>">
+                    <label for='gebruikersnaam'>Name: </label>
+                    <input class="form-input" type="text" name="gebruikersnaam" value="<?php echo $user_info ? htmlspecialchars($user_info->get_username()) : ''; ?>">
 
-                <label for='email'>Email: </label>
-                <input class="form-input" type="email" name="email" value="<?php echo $user_info ? htmlspecialchars($user_info->get_email()) : ''; ?>">
+                    <label for='email'>Email: </label>
+                    <input class="form-input" type="email" name="email" value="<?php echo $user_info ? htmlspecialchars($user_info->get_email()) : ''; ?>">
 
-                <label for='wachtwoord'>Password: </label>
-                <input class="form-input" type="password" name="wachtwoord">
+                    <label for='wachtwoord'>Password: </label>
+                    <input class="form-input" type="password" name="wachtwoord">
 
-                <label for='huidig-wachtwoord'>Current Password: </label>
-                <input class="form-input" type="password" name="huidig-wachtwoord" required>
+                    <label for='huidig-wachtwoord'>Current Password: </label>
+                    <input class="form-input" type="password" name="huidig-wachtwoord" required>
 
-                <div class="submit-position">
-                    <input class="submit-button" type="submit" name="update" value="Submit">
-                </div>
+                    <div class="submit-position">
+                        <input class="submit-button" type="submit" name="update" value="Submit">
+                    </div>
 
-            </form>
+                </form>
 
-            <h2>Account Deletion</h2>
+                <h2>Account Deletion</h2>
 
-            <form class="form addGame-form" action="" method="POST">
+                <form class="form addGame-form" action="" method="POST">
 
-                <label for='wachtwoord'>Password: </label>
-                <input class="form-input" type="password" name="wachtwoord" required>
+                    <label for='wachtwoord'>Password: </label>
+                    <input class="form-input" type="password" name="wachtwoord" required>
 
-                <div class="submit-position">
-                    <input class="submit-button" type="submit" name="delete" value="Submit">
-                </div>
+                    <div class="submit-position">
+                        <input class="submit-button" type="submit" name="delete" value="Submit">
+                    </div>
 
-            </form>
+                </form>
+
+            </div>
 
         </div>
 

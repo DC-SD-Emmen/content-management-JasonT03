@@ -85,50 +85,54 @@
         </div>
         
         <!-- Header and Display -->
-        <div class="mainpage-header">
+        <div class="mainpage-column">
+
+            <div class="mainpage-header">
+                
+                <button class="home-display header-buttons" onclick="window.location.href='index.php'">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </button>
             
-            <button class="home-display header-buttons" onclick="window.location.href='index.php'">
-                <i class="fa-solid fa-house"></i>
-                Home
-            </button>
-        
-            <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                <i class="fa-solid fa-gamepad"></i>
-                Add Game
-            </button>
+                <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                    <i class="fa-solid fa-gamepad"></i>
+                    Add Game
+                </button>
 
-            <button class="login header-buttons" onclick="window.location.href='login.php'">
-                <i class="fa-solid fa-circle-user"></i>
-                Login
-            </button>
+                <button class="login header-buttons" onclick="window.location.href='login.php'">
+                    <i class="fa-solid fa-circle-user"></i>
+                    Login
+                </button>
 
-        </div>
+            </div>
 
-        <div class="mainpage-display">
+            <div class="mainpage-display">
 
-            <div class="games-display">
+                <div class="games-display">
 
-                <?php
+                    <?php
 
-                    foreach ($games as $game) {
+                        foreach ($games as $game) {
 
-                        echo '<div class="game-buttons" 
-                                style="background-image: url(\'uploads/' . htmlspecialchars($game->get_image()) . '\');"
-                                onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
-                            echo '<div class="gamedisplay-overlay">';
-                                echo '<h2 class="gamedisplay-title">' . htmlspecialchars($game->get_title()) . '</h2>';
-                                $genres = explode(",", $game->get_genre());
-                                echo '<div class=gamedisplay-genrebox>';
-                                    foreach ($genres as $genre) {
-                                        echo '<div class="genre-box">' . htmlspecialchars($genre) . '</div>';
-                                    }
+                            echo '<div class="game-buttons" 
+                                    style="background-image: url(\'uploads/' . htmlspecialchars($game->get_image()) . '\');"
+                                    onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
+                                echo '<div class="gamedisplay-overlay">';
+                                    echo '<h2 class="gamedisplay-title">' . htmlspecialchars($game->get_title()) . '</h2>';
+                                    $genres = explode(",", $game->get_genre());
+                                    echo '<div class=gamedisplay-genrebox>';
+                                        foreach ($genres as $genre) {
+                                            echo '<div class="genre-box">' . htmlspecialchars($genre) . '</div>';
+                                        }
+                                    echo '</div>';
                                 echo '</div>';
                             echo '</div>';
-                        echo '</div>';
 
-                    }
+                        }
 
-                ?>
+                    ?>
+
+                </div>
 
             </div>
 
