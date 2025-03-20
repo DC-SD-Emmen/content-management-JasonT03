@@ -156,7 +156,7 @@
                 
                 <h2>Changing account information</h2>
 
-                <form class="form" action="" method="POST">
+                <form class="form addGame-form" action="" method="POST">
 
                     <label for='gebruikersnaam'>Name: </label>
                     <input class="form-input" type="text" name="gebruikersnaam" value="<?php echo $user_info ? htmlspecialchars($user_info->get_username()) : ''; ?>">
@@ -170,18 +170,22 @@
                     <label for='huidig-wachtwoord'>Current Password: </label>
                     <input class="form-input" type="password" name="huidig-wachtwoord" required>
 
-                    <input class="submit-button" type="submit" name="update" value="Submit">
+                    <div class="submit-position">
+                        <input class="submit-button" type="submit" name="update" value="Submit">
+                    </div>
 
                 </form>
 
                 <h2>Account Deletion</h2>
 
-                <form class="form" action="" method="POST">
+                <form class="form addGame-form" action="" method="POST">
 
                     <label for='wachtwoord'>Password: </label>
                     <input class="form-input" type="password" name="wachtwoord" required>
 
-                    <input class="submit-button" type="submit" name="delete" value="Submit">
+                    <div class="submit-position">
+                        <input class="submit-button" type="submit" name="delete" value="Submit">
+                    </div>
 
                 </form>
 

@@ -199,6 +199,23 @@
 
                     ?>
 
+                    <!-- <div class="mainpage-underlay">
+                        <h1>Wishlist</h1>
+
+                        <?php
+
+                            foreach ($user_games as $game) {
+
+                                echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
+                                    echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game->get_image()) . '" alt="' . htmlspecialchars($game->get_title()) . '">';
+                                    echo '<div class="gamelist-title">' . htmlspecialchars($game->get_title()) . '</div>';
+                                echo '</button>';
+
+                            }
+
+                        ?>
+                    </div> -->
+
                 </div>
 
             </div>

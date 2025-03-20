@@ -15,6 +15,10 @@
 
     }
 
+    // Game Manager
+    $game_manager = new GameManager();
+    $games = $game_manager->getGames();
+
 ?>
 
 <!DOCTYPE html>
@@ -35,24 +39,159 @@
 </head>
 <body>
 
-    <h2>Account aanmaken: </h2>
+    <!-- Mainpage -->
+    <div class="mainpage-container">
 
-    <form class="form" action="" method="POST">
+        <!-- Menu -->
+        <div class="mainpage-menu">
 
-        <label for='gebruikersnaam'>Naam: </label>
-        <input class="form-input" type="text" name="gebruikersnaam" requierd>
+            <div class="menu-title menu-underline">
 
-        <label for='email'>Email: </label>
-        <input class="form-input" type="email" name="email" requierd>
+                <h1>Game Library</h1>
 
-        <label for='wachtwoord'>Wachtwoord: </label>
-        <input class="form-input" type="password" name="wachtwoord" requierd>
+            </div>
 
-        <input class="submit-button" type="submit" value="Submit">
+            <div class="menu-functions menu-underline">
 
-    </form>
+                <?php if ($user_manager->isUserLoggedIn()) {?>
 
-    <button onclick="window.location.href='login.php'">Login</button>
+                    <button class="home-display menu-buttons" onclick="window.location.href='dashboard.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game menu-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="account menu-buttons" onclick="window.location.href='account_settings.php'">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Account	Settings
+                    </button>
+
+                    <button class="logout menu-buttons" onclick="window.location.href='add_game.php?logout'">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        Logout
+                    </button>
+
+                <?php } else {?>
+
+                    <button class="home-display menu-buttons" onclick="window.location.href='index.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game menu-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="login menu-buttons" onclick="window.location.href='login.php'">
+                        <i class="fa-solid fa-circle-user"></i>
+                        Login
+                    </button>
+
+                <?php }?>
+
+            </div>
+
+            <div class="menu-gamelist menu-underline">
+
+                <?php
+
+                    foreach ($games as $game) {
+
+                        echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
+                            echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game->get_image()) . '" alt="' . htmlspecialchars($game->get_title()) . '">';
+                            echo '<div class="gamelist-title">' . htmlspecialchars($game->get_title()) . '</div>';
+                        echo '</button>';
+
+                    }
+
+                ?>
+
+            </div>
+
+        </div>
+        
+        <!-- Header and Display -->
+        <div class="mainpage-column">
+            
+            <div class="mainpage-header">
+
+                <?php if ($user_manager->isUserLoggedIn()) {?>
+
+                    <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Account	Settings
+                    </button>
+
+                    <button class="logout header-buttons" onclick="window.location.href='add_game.php?logout'">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        Logout
+                    </button>
+
+                <?php } else {?>
+
+                    <button class="home-display header-buttons" onclick="window.location.href='index.php'">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </button>
+
+                    <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
+                        <i class="fa-solid fa-gamepad"></i>
+                        Add Game
+                    </button>
+
+                    <button class="login header-buttons" onclick="window.location.href='login.php'">
+                        <i class="fa-solid fa-circle-user"></i>
+                        Login
+                    </button>
+
+                <?php }?>
+
+            </div>
+
+            <div class="mainpage-display">
+
+                <h2>Account aanmaken: </h2>
+
+                <form class="form" action="" method="POST">
+
+                    <label for='gebruikersnaam'>Naam: </label>
+                    <input class="form-input" type="text" name="gebruikersnaam" requierd>
+
+                    <label for='email'>Email: </label>
+                    <input class="form-input" type="email" name="email" requierd>
+
+                    <label for='wachtwoord'>Wachtwoord: </label>
+                    <input class="form-input" type="password" name="wachtwoord" requierd>
+
+                    <div class="submit-position">
+                        <input class="submit-button" type="submit" value="Submit">
+                    </div>
+
+                </form>
+
+                <button class="submit-button" onclick="window.location.href='login.php'">Login</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
 
 </body>
 </html>
