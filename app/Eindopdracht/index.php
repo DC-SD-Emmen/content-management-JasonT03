@@ -11,6 +11,7 @@
         file_put_contents($logFile, ''); // Clear log if it’s a new day
     }
 
+    // Game Manager
     $game_manager = new GameManager();
     $games = $game_manager->getGames();
 
@@ -85,24 +86,7 @@
         </div>
         
         <!-- Header and Display -->
-        <div class="mainpage-header">
-            
-            <button class="home-display header-buttons" onclick="window.location.href='index.php'">
-                <i class="fa-solid fa-house"></i>
-                Home
-            </button>
-        
-            <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                <i class="fa-solid fa-gamepad"></i>
-                Add Game
-            </button>
-
-            <button class="login header-buttons" onclick="window.location.href='login.php'">
-                <i class="fa-solid fa-circle-user"></i>
-                Login
-            </button>
-
-        </div>
+        <div class="mainpage-header"></div>
 
         <div class="mainpage-display">
 

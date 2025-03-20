@@ -133,31 +133,7 @@
         </div>
 
         <!-- Header and Display -->
-        <div class="mainpage-header">
-
-            <!-- <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2> -->
-            
-            <button class="home-display header-buttons" onclick="window.location.href='dashboard.php'">
-                <i class="fa-solid fa-house"></i>
-                Home
-            </button>
-        
-            <button class="add-game header-buttons" onclick="window.location.href='add_game.php'">
-                <i class="fa-solid fa-gamepad"></i>
-                Add Game
-            </button>
-
-            <button class="account header-buttons" onclick="window.location.href='account_settings.php'">
-                <i class="fa-solid fa-user-pen"></i>
-                Account	Settings
-            </button>
-
-            <button class="logout header-buttons" onclick="window.location.href='dashboard.php?logout'">
-                <i class="fa-solid fa-circle-xmark"></i>
-                Logout
-            </button>
-
-        </div>
+        <div class="mainpage-header"></div>
 
         <div class="mainpage-display">
 
@@ -196,23 +172,6 @@
                     }
 
                 ?>
-
-                <!-- <div class="mainpage-underlay">
-                    <h1>Wishlist</h1>
-
-                    <?php
-
-                        foreach ($user_games as $game) {
-
-                            echo '<button class="menu-buttons details-button" onclick=window.location.href="game_details.php?id=' . urlencode($game->get_id()) . '">';
-                                echo '<img class="gamelist-images" src="uploads/' . htmlspecialchars($game->get_image()) . '" alt="' . htmlspecialchars($game->get_title()) . '">';
-                                echo '<div class="gamelist-title">' . htmlspecialchars($game->get_title()) . '</div>';
-                            echo '</button>';
-
-                        }
-
-                    ?>
-                </div> -->
 
             </div>
 
