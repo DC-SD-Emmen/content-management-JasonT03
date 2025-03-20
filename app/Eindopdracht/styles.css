@@ -392,7 +392,7 @@ p {
 
     .mainpage-container {
         width: 100%;
-        height: 400vw;
+        /* height: 400vw; */
     }
 
     .games-display {
@@ -407,9 +407,6 @@ p {
     }
 
     .gamedisplay-title {
-        top: -12vw;
-        left: 2vw;
-        width: 64svw;
         font-size: 4vw; 
     }
 
@@ -425,8 +422,12 @@ p {
     
     .genre-box {
         padding: 1vw;
-        top: -11vw;
-        left: 2vw;
+        border-radius: 1vw;
+    }
+
+    .gamedisplay-buttons > button {
+        padding: 1.5vw;
+        font-size: 3vw;
         border-radius: 1vw;
     }
 
@@ -442,7 +443,7 @@ p {
         "header"
         "display";
         grid-template-columns: auto;
-        grid-template-rows: 1fr 0 3fr;
+        grid-template-rows: auto 0 auto;
     }
     
     .game-buttons {
@@ -451,9 +452,6 @@ p {
     }
 
     .gamedisplay-title {
-        top: -18vw;
-        left: 3vw;
-        width: 90svw;
         font-size: 6vw; 
     }
 
@@ -469,14 +467,12 @@ p {
     
     .genre-box {
         padding: 1.5vw;
-        top: -16vw;
-        left: 4vw;
         border-radius: 2vw;
     }
 
     .gamedisplay-buttons > button {
-        height: fit-content;
-        padding: 3vw;
+        padding: 2vw;
+        font-size: 5vw;
         border-radius: 2vw;
     }
 
