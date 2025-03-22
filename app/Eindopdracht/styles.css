@@ -190,16 +190,6 @@ p {
     border: none;
 }
 
-.gamedisplay-image {
-    position: relative;    
-    width: 100%;
-    height: 20vw;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 0.8vw;
-    z-index: 5;
-}
-
 .gamedisplay-overlay {
     display: flex;
     flex-direction: column;
@@ -279,7 +269,6 @@ p {
     border-radius: 0.5vw;
     background-color: rgb(254, 254, 254, 0.3);
     backdrop-filter: blur(4px);
-    z-index: 90;
 }
 
 .details-platformbox {
@@ -295,13 +284,33 @@ p {
     border-radius: 0.5vw;
     background-color: rgb(254, 254, 254, 0.3);
     backdrop-filter: blur(4px);
-    z-index: 90;
 }
 
-.details-description {
-    margin-top: 2.5vw;
-    width: 93.2%;
+.detailsdisplay-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
 }
+
+.detailsdisplay-buttons > button {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    gap: 1vw;
+    padding: 0.6vw;
+    border-radius: 0.5vw;
+    background-color: rgba(254, 254, 254, 0.3);
+    backdrop-filter: blur(4px);
+    color: #FEFEFE;
+    font-size: 2vw;
+    border: none;
+    cursor: pointer;
+}
+
+/* .details-description {
+
+} */
+
 
 /* Form */
 
